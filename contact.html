@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Whitezebra Consulting</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <span>⚡</span> <a href="index.html" style="color: white; text-decoration: none;">Whitezebra Consulting</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section style="padding-top: 100px; text-align: center;">
+        <h1>Get In Touch</h1>
+        <p style="max-width: 600px; margin: 1rem auto;">Ready to streamline your operations? Let's discuss how we can help.</p>
+    </section>
+
+    <section class="contact" style="max-width: 1000px; margin: 0 auto;">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3 style="color: #1a2a4a; margin-bottom: 1rem;">Contact Information</h3>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <strong>Email</strong><br>
+                        hello@whitezebraconsulting.com
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div>
+                        <strong>Phone</strong><br>
+                        +91-XXXXXXXXXX
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <strong>Office</strong><br>
+                        [Your City], India<br>
+                        Serving Clients Globally
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🕒</div>
+                    <div>
+                        <strong>Business Hours</strong><br>
+                        24/7 Operations Support<br>
+                        Mon-Fri: 9AM-6PM IST
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <h3 style="color: #1a2a4a; margin-bottom: 1rem;">Request Consultation</h3>
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Company Name</label>
+                    <input type="text" id="company" name="company">
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Interested In</label>
+                    <input type="text" id="service" name="service" placeholder="e.g., E-commerce Management">
+                </div>
+                <div class="form-group">
+                    <label for="message">Project Requirements *</label>
+                    <textarea id="message" name="message" placeholder="Describe your needs..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Request</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Whitezebra Consulting Pvt. Ltd.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
