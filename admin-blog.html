@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Admin - Whitezebra Consulting</title>
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body class="admin-page">
+    <nav class="admin-nav">
+        <div class="nav-left">
+            <span class="logo-icon">⚡</span>
+		<img src="zebra.png" alt="Whitezebra Consulting" class="logo-img">
+    		<a href="index.html" style="color: white; text-decoration: none;">Whitezebra Consulting</a>
+            <h3>Blog Admin</h3>
+        </div>
+        <div class="nav-right">
+            <a href="admin-dashboard.html" class="logout-btn">← Back to Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-container" style="margin-top: 60px;">
+        <main class="main-content" style="padding: 2rem; max-width: 1000px; margin: 0 auto;">
+            <h2 style="margin-bottom: 2rem;">Manage Blog Posts</h2>
+            
+            <button class="cta-button" style="margin-bottom: 2rem;" onclick="alert('In full version, this opens a post editor')">+ New Blog Post</button>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>5 Benefits of Offshore Backend Operations</td>
+                            <td>Operations</td>
+                            <td>Jan 15, 2024</td>
+                            <td><span style="color: #48bb78;">✓ Published</span></td>
+                            <td><button class="action-btn">Edit</button> <button class="action-btn" style="background: #e53e3e;">Delete</button></td>
+                        </tr>
+                        <tr>
+                            <td>Shopify Store Management Best Practices</td>
+                            <td>E-commerce</td>
+                            <td>Jan 10, 2024</td>
+                            <td><span style="color: #48bb78;">✓ Published</span></td>
+                            <td><button class="action-btn">Edit</button> <button class="action-btn" style="background: #e53e3e;">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-top: 2rem; padding: 1.5rem; background: var(--admin-card); border-radius: 8px;">
+                <h3 style="margin-bottom: 1rem;">Quick Tips</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 0.5rem 0;">• Click "New Blog Post" to create articles</li>
+                    <li style="padding: 0.5rem 0;">• Use "Edit" to modify existing posts</li>
+                    <li style="padding: 0.5rem 0;">• Posts are saved to your GitHub repository</li>
+                    <li style="padding: 0.5rem 0;">• Changes appear on live site within minutes</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

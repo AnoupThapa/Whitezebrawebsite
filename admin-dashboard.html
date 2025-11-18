@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Whitezebra Consulting</title>
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body class="admin-page">
+    <nav class="admin-nav">
+        <div class="nav-left">
+            <span class="logo-icon"><img src="zebra.png" alt="Whitezebra Consulting" class="logo-img">
+    		<a href="index.html" style="color: white; text-decoration: none;">Whitezebra Consulting</a>
+            <h3>Admin Panel</h3>
+        </div>
+        <div class="nav-right">
+            <span id="adminUser">Welcome, Admin</span>
+            <a href="admin-login.html" onclick="logout()" class="logout-btn">Logout</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <ul class="menu">
+                <li class="menu-item active" onclick="showSection('leads')">📋 New Leads</li>
+                <li class="menu-item" onclick="showSection('clients')">👥 Client Management</li>
+                <li class="menu-item" onclick="showSection('projects')">📊 Projects</li>
+                <li class="menu-item" onclick="showSection('analytics')">📈 Analytics</li>
+                <li class="menu-item" onclick="showSection('settings')">⚙️ Settings</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <!-- Leads Section -->
+            <div id="leads-section" class="section active">
+                <h2>New Consultation Requests</h2>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Name</th>
+                                <th>Company</th>
+                                <th>Service</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leadsTable">
+                            <!-- Dynamic content will load here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Clients Section -->
+            <div id="clients-section" class="section">
+                <h2>Client Management</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">2</div>
+                        <p>Active Clients</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <p>Total Projects</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Section -->
+            <div id="projects-section" class="section">
+                <h2>Active Projects</h2>
+                <p>Manage ongoing client projects here.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+</html>
