@@ -1,42 +1,126 @@
-// Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+// Mobile menu toggle with hamburger/cross animation
+let isMenuOpen = false;
+const mobileMenu = document.getElementById('mobileMenu');
+const navLinks = document.getElementById('navLinks');
+
+function toggleMenu() {
+    isMenuOpen = !isMenuOpen;
+    
+    // Toggle menu visibility
+    navLinks.classList.toggle('active');
+    
+    // Toggle hamburger/cross animation
+    mobileMenu.classList.toggle('open');
+    
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
+}
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+            navLinks.classList.remove('active');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = 'auto';
+            isMenuOpen = false;
         }
     });
 });
 
-// Form Submission
-function handleSubmit(event) {
-    event.preventDefault();
-    alert('Thank you! We will contact you within 24 hours to discuss your requirements.');
-    event.target.reset();
+// Close menu when clicking outside
+document.addEventListener('click', (event) => {
+    const isClickInsideNav = navLinks.contains(event.target) || mobileMenu.contains(event.target);
+    
+    if (!isClickInsideNav && isMenuOpen) {
+        navLinks.classList.remove('active');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = 'auto';
+        isMenuOpen = false;
+    }
+});
+
+// Navbar hide/show on scroll
+let lastScrollTop = 0;
+const navbar = document.getElementById('mainNav');
+const scrollThreshold = 100; // Minimum scroll distance before hiding
+let isNavbarVisible = true;
+
+window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Determine scroll direction
+    if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+        // Scrolling DOWN - hide navbar
+        if (isNavbarVisible) {
+            navbar.classList.add('hide-nav');
+            isNavbarVisible = false;
+        }
+    } else {
+        // Scrolling UP - show navbar
+        if (!isNavbarVisible) {
+            navbar.classList.remove('hide-nav');
+            isNavbarVisible = true;
+        }
+    }
+    
+    lastScrollTop = scrollTop;
+    
+    // Navbar background on scroll
+    if (scrollTop > 50) {
+        navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+        navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+    } else {
+        navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+        navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
+    }
+});
+
+// Show navbar when mouse is near top of screen
+document.addEventListener('mousemove', function(e) {
+    if (e.clientY < 100 && !isNavbarVisible) {
+        navbar.classList.remove('hide-nav');
+        isNavbarVisible = true;
+    }
+});
+
+// Scroll to next section when clicking scroll indicator
+function scrollToNextSection() {
+    const nextSection = document.querySelector('#about');
+    nextSection.scrollIntoView({ behavior: 'smooth' });
 }
 
-// Mobile Menu Toggle
-function toggleMenu() {
-    const navLinks = document.querySelector('.nav-links');
-    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-    navLinks.style.position = 'absolute';
-    navLinks.style.top = '100%';
-    navLinks.style.left = '0';
-    navLinks.style.width = '100%';
-    navLinks.style.background = 'var(--primary)';
-    navLinks.style.flexDirection = 'column';
-    navLinks.style.padding = '1rem';
+// Keep navbar visible when hovering over it
+navbar.addEventListener('mouseenter', function() {
+    if (!isNavbarVisible) {
+        navbar.classList.remove('hide-nav');
+        isNavbarVisible = true;
+    }
+});
+
+// Handle mobile viewport height for hero section
+function setHeroHeight() {
+    const hero = document.querySelector('.hero');
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    
+    // Set hero section height to full viewport
+    hero.style.height = `${window.innerHeight}px`;
 }
 
-// Update footer year
-document.addEventListener('DOMContentLoaded', function() {
-    const year = new Date().getFullYear();
-    const footerText = document.querySelector('footer p');
-    if (footerText) {
-        footerText.innerHTML = `&copy; ${year} Whitezebra Consulting Pvt. Ltd. All Rights Reserved.`;
+// Set initial hero height
+setHeroHeight();
+
+// Update hero height on resize and orientation change
+window.addEventListener('resize', setHeroHeight);
+window.addEventListener('orientationchange', setHeroHeight);
+
+// Close menu on window resize if it becomes desktop view
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768 && isMenuOpen) {
+        navLinks.classList.remove('active');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = 'auto';
+        isMenuOpen = false;
     }
 });
