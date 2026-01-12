@@ -1,13 +1,8 @@
-# Allow all search engines to crawl the site
-User-agent: *
+# robots.txt for whitezebraconsulting.com
 
-# Disallow private or administrative folders (adjust names if needed)
+User-agent: *
 Disallow: /admin/
 Disallow: /scripts/
 Disallow: /private/
 
-# Allow all other content
-Allow: /
-
-# Link to your sitemap (update with your actual domain when live)
 Sitemap: https://www.whitezebraconsulting.com/sitemap.xml
