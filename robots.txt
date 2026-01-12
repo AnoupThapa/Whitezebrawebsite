@@ -1,8 +1,29 @@
-# robots.txt for whitezebraconsulting.com
+# Whitezebra Consulting - robots.txt
+# This file tells search engines which pages to crawl and which to avoid
 
 User-agent: *
-Disallow: /admin/
-Disallow: /scripts/
-Disallow: /private/
+Allow: /
+Allow: /src/
+Allow: /src/about.html
+Allow: /src/services.html
+Allow: /src/contact.html
+Allow: /src/ourteam.html
+Allow: /src/blog.html
+Allow: /src/blog-post.html
 
-Sitemap: https://www.whitezebraconsulting.com/sitemap.xml
+# Disallow admin and config files
+Disallow: /src/css/
+Disallow: /src/js/
+Disallow: /src/blogs/template.json
+Disallow: /src/blogs/README.md
+Disallow: /src/blogs/IMAGE_GUIDELINES.md
+Disallow: /src/blogs/SEO_SOLUTIONS.md
+
+# Allow blog posts
+Allow: /src/blogs/*.json
+
+# Sitemap location
+Sitemap: https://whitezebraconsulting.com/sitemap.xml
+
+# Crawl delay (optional - adjust if needed)
+Crawl-delay: 1
