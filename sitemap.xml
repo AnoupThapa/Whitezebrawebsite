@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
+
   <!-- Homepage -->
   <url>
     <loc>https://whitezebraconsulting.com/</loc>
@@ -41,7 +41,7 @@
     <priority>0.80</priority>
   </url>
 
-  <!-- Individual Blog Posts -->
+  <!-- Blog Posts -->
   <url>
     <loc>https://whitezebraconsulting.com/post1</loc>
     <lastmod>2026-01-12T04:52:27+00:00</lastmod>
