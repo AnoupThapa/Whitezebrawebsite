@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Meet the talented team behind Whitezebra Consulting - experts in offshore operations and backend support services.">
+    <title>Our Team - Whitezebra Consulting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">`n    <link rel="stylesheet" href="./css/footer.css">
+    <style>
+        /* Team Page Specific Styles */
+        .team-hero {
+            padding-top: 150px;
+            padding-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDQwIDMyMCI+PHBhdGggZmlsbD0iIzAwMDAwMCIgZmlsbC1vcGFjaXR5PSIwLjEiIGQ9Ik0wLDMyMEwxNDQwLDBMMTQ0MCwzMjBaIi8+PC9zdmc+');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+        }
+
+        .team-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .team-hero p {
+            max-width: 700px;
+            margin: 1.5rem auto;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Team Member Cards */
+        .team-member-card {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-member-card:hover .team-avatar {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-member-card h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .team-bio {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .team-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(45, 107, 201, 0.1);
+            border-radius: 50%;
+            color: var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .team-social a:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Culture Section */
+        .culture-section {
+            background-color: var(--light);
+            padding: 5rem 0;
+        }
+
+        .culture-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.5rem;
+        }
+
+        .culture-list li {
+            padding: 0.8rem 0;
+            color: var(--dark);
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .culture-list i {
+            color: var(--accent);
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .team-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .team-hero p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .team-avatar {
+                width: 120px;
+                height: 120px;
+                font-size: 2.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .team-hero {
+                padding-top: 120px;
+            }
+
+            .team-avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="mainNav">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="./assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img">
+                <a href="../index.html" class="logo-text">Whitezebra Consulting</a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="ourteam.html">Our Team</a></li>
+                <li><a href="blog.html">Blogs</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu" onclick="toggleMenu()">
+                <span class="bar bar1"></span>
+                <span class="bar bar2"></span>
+                <span class="bar bar3"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="team-hero">
+            <div class="container">
+                <h1>Meet Our Team</h1>
+                <p>Dedicated professionals committed to delivering excellence in offshore operations</p>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+
+        <!-- Update these team members -->
+        <!-- If needed add social media link -->
+        <!-- Add Image of team members if needed -->
+
+        <section style="padding: 5rem 0;">
+            <div class="container">
+                <h2 class="section-title">Leadership Team</h2>
+                <div class="services-grid" style="gap: 3rem;">
+                    <!-- Team Member 1 -->
+                    <div class="service-card team-member-card">
+                        <img src="./assets/team-member-1.jpg" alt="Team Member 1" class="team-avatar">
+                        <h3>Team Member 1</h3>
+                        <p class="team-role">Founder & CEO</p>
+                        <p class="team-bio">
+                            Leading the vision with 15+ years of experience in offshore operations and business process outsourcing.
+                        </p>
+                        <!-- <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div> -->
+                    </div>
+
+                    <!-- Team Member 2 -->
+                    <div class="service-card team-member-card">
+                        <img src="./assets/team-member-2.jpg" alt="Team Member 2" class="team-avatar">
+                        <h3>Team Member 2</h3>
+                        <p class="team-role">Operations Director</p>
+                        <p class="team-bio">
+                            Ensuring seamless operations and client satisfaction with expertise in digital marketing and e-commerce.
+                        </p>
+                        <!-- <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div> -->
+                    </div>
+
+                    <!-- Team Member 3 -->
+                    <div class="service-card team-member-card">
+                        <img src="./assets/team-member-3.jpg" alt="Team Member 3" class="team-avatar">
+                        <h3>Team Member 3</h3>
+                        <p class="team-role">Technical Lead</p>
+                        <p class="team-bio">
+                            Driving technical excellence and innovation in web development and system management.
+                        </p>
+                        <!-- <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div> -->
+                    </div>
+                    <!-- Team Member 4 -->
+                    <div class="service-card team-member-card">
+                        <img src="./assets/team-member-4.jpg" alt="Team Member 4" class="team-avatar">
+                        <h3>Team Member 4</h3>
+                        <p class="team-role">Marketing Manager</p>
+                        <p class="team-bio">
+                            Crafting compelling marketing strategies that drive engagement and deliver measurable results.
+                        </p>
+                        <!-- <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div> -->
+                    </div>
+
+                    <!-- Team Member 5 -->
+                    <div class="service-card team-member-card">
+                        <img src="./assets/team-member-5.jpg" alt="Team Member 5" class="team-avatar">
+                        <h3>Team Member 5</h3>
+                        <p class="team-role">Client Success Manager</p>
+                        <p class="team-bio">
+                            Ensuring client satisfaction and building long-term partnerships through exceptional service delivery.
+                        </p>
+                        <!-- <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div> -->
+                    </div>
+
+                    <!-- Team Member 6 -->
+                    <div class="service-card team-member-card">
+                        <img src="./assets/team-member-6.jpg" alt="Team Member 6" class="team-avatar">
+                        <h3>Team Member 6</h3>
+                        <p class="team-role">Creative Director</p>
+                        <p class="team-bio">
+                            Leading creative initiatives with innovative design solutions that bring brands to life.
+                        </p>
+                        <!-- <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div> -->
+                    </div>
+                </div>
+
+                <h2 class="section-title" style="margin-top: 5rem;">Our Specialists</h2>
+                <div class="benefits-grid">
+                    <!-- Specialist 1 -->
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3>Marketing Team</h3>
+                        <p>Expert strategists driving digital growth and brand visibility across all channels.</p>
+                    </div>
+
+                    <!-- Specialist 2 -->
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>E-Commerce Team</h3>
+                        <p>Dedicated professionals managing online stores with precision and efficiency.</p>
+                    </div>
+
+                    <!-- Specialist 3 -->
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Design Team</h3>
+                        <p>Creative designers crafting stunning visuals that elevate your brand identity.</p>
+                    </div>
+
+                    <!-- Specialist 4 -->
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>Support Team</h3>
+                        <p>Responsive support specialists ensuring smooth operations 24/7.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column footer-logo">
+                    <div class="logo" style="color: white; margin-bottom: 1.5rem;">
+                        <img src="./assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img" style="height: 50px;">
+                        <span>Whitezebra Consulting</span>
+                    </div>
+                    <p>Your trusted offshore operations partner delivering premium backend support services for digital businesses worldwide.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/whitezebraconsulting/"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="ourteam.html">Our Team</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services.html#digital-marketing">Digital Marketing</a></li>
+                        <li><a href="services.html#ecommerce">E-Commerce Management</a></li>
+                        <li><a href="services.html#graphic-design">Graphic Design</a></li>
+                        <li><a href="services.html#admin">Admin Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column contact-info">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Phulbari Nagar Marg, Kathmandu 44600, Nepal</p>
+                    <p><i class="fas fa-phone"></i> +977-9851324698</p>
+                    <p><i class="fas fa-envelope"></i> info.whitezebraconsulting@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 5:30 AM - 2:00 PM (NST)</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Whitezebra Consulting Pvt. Ltd. All rights reserved.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.8rem;">Designed with excellence for business growth</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
+

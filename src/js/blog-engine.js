@@ -1,0 +1,222 @@
+/**
+ * Blog Engine - Dynamic Blog Post Rendering System
+ * Fetches blog posts from JSON files and renders them dynamically
+ */
+
+class BlogEngine {
+    constructor() {
+        this.posts = [];
+        this.filteredPosts = [];
+        this.currentCategory = 'all';
+        this.postsPerPage = 9;
+        this.currentPage = 1;
+        this.blogFolder = './blogs/';
+    }
+
+    /**
+     * Initialize the blog engine
+     */
+    async init() {
+        await this.loadBlogPosts();
+        this.setupEventListeners();
+        this.renderBlogPosts();
+    }
+
+    /**
+     * Load all blog posts from JSON files
+     */
+    async loadBlogPosts() {
+        // List of blog post files (you can expand this list as you add more posts)
+        const postFiles = [
+            'offshore-backend-operations.json',
+            'shopify-store-management.json',
+            'digital-marketing-trends-2024.json'
+        ];
+
+        try {
+            const promises = postFiles.map(file => 
+                fetch(`${this.blogFolder}${file}`)
+                    .then(response => response.json())
+                    .catch(error => {
+                        console.error(`Error loading ${file}:`, error);
+                        return null;
+                    })
+            );
+
+            const results = await Promise.all(promises);
+            this.posts = results.filter(post => post !== null);
+            
+            // Sort posts by date (newest first)
+            this.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            this.filteredPosts = [...this.posts];
+            
+            console.log(`Loaded ${this.posts.length} blog posts`);
+        } catch (error) {
+            console.error('Error loading blog posts:', error);
+        }
+    }
+
+    /**
+     * Setup event listeners for filters and pagination
+     */
+    setupEventListeners() {
+        // Category filter buttons
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                this.handleCategoryFilter(e.target);
+            });
+        });
+    }
+
+    /**
+     * Handle category filtering
+     */
+    handleCategoryFilter(button) {
+        // Update active button
+        document.querySelectorAll('.filter-btn').forEach(btn => 
+            btn.classList.remove('active')
+        );
+        button.classList.add('active');
+
+        // Get category from button text
+        const category = button.textContent.trim();
+        
+        // Filter posts
+        if (category === 'All Articles') {
+            this.filteredPosts = [...this.posts];
+        } else {
+            this.filteredPosts = this.posts.filter(post => 
+                post.category === category
+            );
+        }
+
+        // Reset to first page and render
+        this.currentPage = 1;
+        this.renderBlogPosts();
+        this.renderPagination();
+    }
+
+    /**
+     * Render blog posts to the DOM
+     */
+    renderBlogPosts() {
+        const blogGrid = document.querySelector('.blog-grid');
+        if (!blogGrid) return;
+
+        // Calculate pagination
+        const startIndex = (this.currentPage - 1) * this.postsPerPage;
+        const endIndex = startIndex + this.postsPerPage;
+        const postsToShow = this.filteredPosts.slice(startIndex, endIndex);
+
+        // Clear existing content
+        blogGrid.innerHTML = '';
+
+        // Render each post
+        postsToShow.forEach((post, index) => {
+            const postCard = this.createBlogCard(post, index === 0 && this.currentPage === 1);
+            blogGrid.appendChild(postCard);
+        });
+
+        // Show message if no posts
+        if (postsToShow.length === 0) {
+            blogGrid.innerHTML = '<p style="text-align: center; grid-column: 1 / -1; padding: 3rem; color: var(--gray);">No blog posts found in this category.</p>';
+        }
+    }
+
+    /**
+     * Create a blog card element
+     */
+    createBlogCard(post, isFeatured = false) {
+        const article = document.createElement('article');
+        article.className = 'blog-card';
+
+        // Generate gradient for image
+        const gradients = [
+            'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+            'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+            'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+            'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+            'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)'
+        ];
+        const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
+
+        article.innerHTML = `
+            <div class="blog-image" style="background: ${randomGradient};">
+                ${post.featured || isFeatured ? '<span style="position: absolute; top: 1rem; right: 1rem; background: white; color: #667eea; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600;">FEATURED</span>' : ''}
+            </div>
+            <div class="blog-content">
+                <span class="blog-category">${post.category}</span>
+                <h3><a href="blog-post.html?slug=${post.slug}">${post.title}</a></h3>
+                <p class="blog-excerpt">${post.excerpt}</p>
+                <div class="blog-meta">
+                    <div class="read-time">
+                        <i class="far fa-clock"></i>
+                        <span>${post.readTime}</span>
+                    </div>
+                    <a href="blog-post.html?slug=${post.slug}" class="read-more">
+                        Read Article <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        `;
+
+        return article;
+    }
+
+    /**
+     * Render pagination controls
+     */
+    renderPagination() {
+        const paginationContainer = document.querySelector('.pagination');
+        if (!paginationContainer) return;
+
+        const totalPages = Math.ceil(this.filteredPosts.length / this.postsPerPage);
+        
+        // Clear existing pagination
+        paginationContainer.innerHTML = '';
+
+        // Don't show pagination if only one page
+        if (totalPages <= 1) return;
+
+        // Create pagination buttons
+        for (let i = 1; i <= totalPages; i++) {
+            const button = document.createElement('a');
+            button.href = '#';
+            button.className = `pagination-btn ${i === this.currentPage ? 'active' : ''}`;
+            button.textContent = i;
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.currentPage = i;
+                this.renderBlogPosts();
+                this.renderPagination();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            paginationContainer.appendChild(button);
+        }
+
+        // Add next button if not on last page
+        if (this.currentPage < totalPages) {
+            const nextButton = document.createElement('a');
+            nextButton.href = '#';
+            nextButton.className = 'pagination-btn';
+            nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+            nextButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.currentPage++;
+                this.renderBlogPosts();
+                this.renderPagination();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            paginationContainer.appendChild(nextButton);
+        }
+    }
+}
+
+// Initialize blog engine when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    const blogEngine = new BlogEngine();
+    blogEngine.init();
+});

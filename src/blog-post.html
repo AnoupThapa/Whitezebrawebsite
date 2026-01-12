@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Post - Whitezebra Consulting">
+    <title>Blog Post - Whitezebra Consulting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .post-header {
+            background: linear-gradient(135deg, #1a2a4a 0%, #2d4379 100%);
+            padding: 140px 0 60px;
+            color: white;
+        }
+
+        .post-header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .post-category {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .post-header h1 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
+
+        .post-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .post-content {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .post-content h2 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 2rem;
+            margin: 2.5rem 0 1rem;
+            color: #1a2a4a;
+        }
+
+        .post-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .post-introduction {
+            font-size: 1.2rem;
+            color: #555;
+            font-style: italic;
+            border-left: 4px solid #3498db;
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .post-conclusion {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-blog:hover {
+            gap: 1rem;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .loading i {
+            font-size: 3rem;
+            color: #3498db;
+        }
+
+        @media (max-width: 768px) {
+            .post-header h1 {
+                font-size: 2rem;
+            }
+
+            .post-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .post-content h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="mainNav">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="./assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img">
+                <a href="../index.html" class="logo-text">Whitezebra Consulting</a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="ourteam.html">Our Team</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu" onclick="toggleMenu()">
+                <span class="bar bar1"></span>
+                <span class="bar bar2"></span>
+                <span class="bar bar3"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Post Header -->
+    <header class="post-header" id="postHeader">
+        <div class="post-header-content">
+            <div class="loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p style="margin-top: 1rem;">Loading post...</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <main>
+        <article class="post-content" id="postContent">
+            <!-- Content will be loaded dynamically -->
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column footer-logo">
+                    <div class="logo" style="color: white; margin-bottom: 1.5rem;">
+                        <img src="./assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img" style="height: 50px;">
+                        <span>Whitezebra Consulting</span>
+                    </div>
+                    <p>Your trusted offshore operations partner delivering premium backend support services for digital businesses worldwide.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/whitezebraconsulting/"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="ourteam.html">Our Team</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services.html#digital-marketing">Digital Marketing</a></li>
+                        <li><a href="services.html#ecommerce">E-Commerce Management</a></li>
+                        <li><a href="services.html#graphic-design">Graphic Design</a></li>
+                        <li><a href="services.html#admin">Admin Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column contact-info">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Phulbari Nagar Marg, Kathmandu 44600, Nepal</p>
+                    <p><i class="fas fa-phone"></i> +977-9851324698</p>
+                    <p><i class="fas fa-envelope"></i> info.whitezebraconsulting@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 5:30 AM - 2:00 PM (NST)</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Whitezebra Consulting Pvt. Ltd. All rights reserved.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.8rem;">Designed with excellence for business growth</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Load blog post dynamically
+        async function loadBlogPost() {
+            // Get slug from URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const slug = urlParams.get('slug');
+
+            if (!slug) {
+                window.location.href = 'blog.html';
+                return;
+            }
+
+            try {
+                // Fetch the blog post
+                const response = await fetch(`./blogs/${slug}.json`);
+                if (!response.ok) throw new Error('Post not found');
+                
+                const post = await response.json();
+
+                // Update page title and meta
+                document.title = `${post.title} - Whitezebra Consulting`;
+                document.querySelector('meta[name="description"]').content = post.seo.metaDescription;
+
+                // Render header
+                const postHeader = document.getElementById('postHeader');
+                postHeader.innerHTML = `
+                    <div class="post-header-content">
+                        <span class="post-category">${post.category}</span>
+                        <h1>${post.title}</h1>
+                        <div class="post-meta">
+                            <div class="post-meta-item">
+                                <i class="far fa-calendar"></i>
+                                <span>${new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                            </div>
+                            <div class="post-meta-item">
+                                <i class="far fa-clock"></i>
+                                <span>${post.readTime}</span>
+                            </div>
+                            <div class="post-meta-item">
+                                <i class="far fa-user"></i>
+                                <span>${post.author}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Render content
+                const postContent = document.getElementById('postContent');
+                let contentHTML = `
+                    <a href="blog.html" class="back-to-blog">
+                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    </a>
+                `;
+
+                // Add featured image if exists
+                if (post.image) {
+                    contentHTML += `
+                        <div style="margin: 2rem 0; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+                            <img src="./blogs_images/${post.image}" 
+                                 alt="${post.title}" 
+                                 style="width: 100%; height: auto; display: block;"
+                                 onerror="this.style.display='none'">
+                        </div>
+                    `;
+                }
+
+                contentHTML += `<p class="post-introduction">${post.content.introduction}</p>`;
+
+                // Add sections
+                post.content.sections.forEach(section => {
+                    contentHTML += `
+                        <h2>${section.heading}</h2>
+                        <p>${section.content}</p>
+                    `;
+                });
+
+                // Add conclusion
+                contentHTML += `
+                    <div class="post-conclusion">
+                        <h2>Conclusion</h2>
+                        <p>${post.content.conclusion}</p>
+                    </div>
+                `;
+
+                // Add tags if available
+                if (post.tags && post.tags.length > 0) {
+                    contentHTML += `
+                        <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e5e7eb;">
+                            <h3 style="font-size: 1rem; color: #6b7280; margin-bottom: 1rem;">Tags:</h3>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                ${post.tags.map(tag => `
+                                    <span style="padding: 0.4rem 1rem; background: #f3f4f6; color: #1a56db; border-radius: 50px; font-size: 0.9rem;">${tag}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                postContent.innerHTML = contentHTML;
+
+            } catch (error) {
+                console.error('Error loading blog post:', error);
+                document.getElementById('postHeader').innerHTML = `
+                    <div class="post-header-content">
+                        <h1>Post Not Found</h1>
+                        <p>Sorry, we couldn't find the blog post you're looking for.</p>
+                        <a href="blog.html" class="back-to-blog" style="color: white; margin-top: 2rem; display: inline-flex;">
+                            <i class="fas fa-arrow-left"></i> Back to Blog
+                        </a>
+                    </div>
+                `;
+                document.getElementById('postContent').innerHTML = '';
+            }
+        }
+
+        // Load post when page loads
+        document.addEventListener('DOMContentLoaded', loadBlogPost);
+    </script>
+</body>
+</html>

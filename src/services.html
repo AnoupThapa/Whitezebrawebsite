@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore our comprehensive service portfolio - Digital Marketing, E-Commerce Management, Graphic Design, and more.">
+    <title>Our Services - Whitezebra Consulting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">`n    <link rel="stylesheet" href="./css/footer.css">
+    <style>
+        /* Services Page Specific Styles */
+        :root {
+            --primary-dark: #1a2a4a;
+            --primary-light: #2d4379;
+            --accent-color: #3498db;
+            --accent-secondary: #e74c3c;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #495057;
+            --text-color: #333;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Hero Section */
+        .services-hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 160px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(52, 152, 219, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(231, 76, 60, 0.1) 0%, transparent 50%);
+        }
+
+        .services-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .services-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.7);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Section Container */
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 1rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Service Cards Grid */
+        .services-grid-enhanced {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .service-card-enhanced {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card-enhanced:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card-enhanced:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .service-icon-enhanced {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .service-card-enhanced:hover .service-icon-enhanced {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .service-card-enhanced h3 {
+            font-size: 1.6rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .service-card-enhanced > p {
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .service-features li {
+            padding: 0.6rem 0;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-features li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--accent-color);
+            margin-right: 12px;
+            font-size: 0.9rem;
+        }
+
+        /* Process Section */
+        .process-section {
+            background: var(--light-gray);
+            padding: 5rem 1rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-dark);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .process-step h4 {
+            color: var(--primary-dark);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .process-step p {
+            color: var(--dark-gray);
+        }
+
+        /* CTA Section */
+        .services-cta {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+            border-radius: 15px;
+            margin: 5rem auto;
+            max-width: 1200px;
+        }
+
+        .services-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .services-cta p {
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .cta-button-enhanced {
+            display: inline-block;
+            background: white;
+            color: var(--primary-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 2px solid white;
+            font-size: 1.1rem;
+        }
+
+        .cta-button-enhanced:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .services-grid-enhanced {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .services-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-hero {
+                padding: 140px 0 60px;
+            }
+
+            .services-hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .services-grid-enhanced {
+                grid-template-columns: 1fr;
+            }
+
+            .services-cta h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .service-card-enhanced {
+                padding: 2rem 1.5rem;
+            }
+
+            .services-hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="mainNav">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="./assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img">
+                <a href="../index.html" class="logo-text">Whitezebra Consulting</a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="ourteam.html">Our Team</a></li>
+                <li><a href="blog.html">Blogs</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu" onclick="toggleMenu()">
+                <span class="bar bar1"></span>
+                <span class="bar bar2"></span>
+                <span class="bar bar3"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="services-hero">
+            <div class="services-container">
+                <h1>Our Complete Service Portfolio</h1>
+                <p>Comprehensive offshore backend solutions designed to streamline your operations and accelerate business growth</p>
+            </div>
+        </section>
+
+        <!-- Services Grid -->
+        <section class="services-container">
+            <div class="section-header">
+                <h2>What We Offer</h2>
+                <p>From digital marketing to administrative support, we provide end-to-end backend solutions tailored to your business needs</p>
+            </div>
+
+            <div class="services-grid-enhanced">
+                <!-- Digital Marketing -->
+                <div class="service-card-enhanced">
+                    <div class="service-icon-enhanced">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Digital Marketing</h3>
+                    <p>Full-spectrum digital marketing strategies to grow your online presence and drive measurable results.</p>
+                    <ul class="service-features">
+                        <li>Social Media Management</li>
+                        <li>SEO & Content Marketing</li>
+                        <li>Email Campaigns</li>
+                        <li>PPC Advertising</li>
+                        <li>Analytics & Reporting</li>
+                    </ul>
+                </div>
+
+                <!-- E-Commerce Management -->
+                <div class="service-card-enhanced">
+                    <div class="service-icon-enhanced">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-Commerce Management</h3>
+                    <p>Complete online store management solutions to optimize your e-commerce operations.</p>
+                    <ul class="service-features">
+                        <li>Shopify Store Management</li>
+                        <li>WordPress Website Admin</li>
+                        <li>Product Listing & Optimization</li>
+                        <li>Order Processing & Fulfillment</li>
+                        <li>Customer Support</li>
+                    </ul>
+                </div>
+
+                <!-- Graphic Design -->
+                <div class="service-card-enhanced">
+                    <div class="service-icon-enhanced">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Graphic Design</h3>
+                    <p>Creative design solutions that elevate your brand identity and engage your audience.</p>
+                    <ul class="service-features">
+                        <li>Brand Identity Design</li>
+                        <li>Marketing Collaterals</li>
+                        <li>Social Media Graphics</li>
+                        <li>Website UI/UX Elements</li>
+                        <li>Presentation Design</li>
+                    </ul>
+                </div>
+
+                <!-- Website Management -->
+                <div class="service-card-enhanced">
+                    <div class="service-icon-enhanced">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Website Management</h3>
+                    <p>Proactive website maintenance ensuring optimal performance, security, and user experience.</p>
+                    <ul class="service-features">
+                        <li>Content Updates</li>
+                        <li>Performance Monitoring</li>
+                        <li>Security Management</li>
+                        <li>Plugin & Theme Updates</li>
+                        <li>Backup & Recovery</li>
+                    </ul>
+                </div>
+
+                <!-- Accounting Support -->
+                <div class="service-card-enhanced">
+                    <div class="service-icon-enhanced">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Accounting Support</h3>
+                    <p>Reliable financial administration services to keep your books organized and compliant.</p>
+                    <ul class="service-features">
+                        <li>Bookkeeping</li>
+                        <li>Invoice Management</li>
+                        <li>Expense Tracking</li>
+                        <li>Financial Reporting</li>
+                        <li>Payroll Processing</li>
+                    </ul>
+                </div>
+
+                <!-- Admin Support -->
+                <div class="service-card-enhanced">
+                    <div class="service-icon-enhanced">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Admin Support</h3>
+                    <p>Comprehensive administrative assistance to streamline your daily operations.</p>
+                    <ul class="service-features">
+                        <li>Data Entry & Management</li>
+                        <li>Email & Calendar Management</li>
+                        <li>Document Preparation</li>
+                        <li>Research & Analysis</li>
+                        <li>Customer Service</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process-section">
+            <div class="services-container">
+                <div class="section-header">
+                    <h2>Our Process</h2>
+                    <p>A streamlined approach to delivering exceptional offshore backend services</p>
+                </div>
+
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h4>Discovery & Consultation</h4>
+                        <p>We understand your business needs, goals, and challenges to create a tailored solution.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h4>Strategy Development</h4>
+                        <p>Our team develops a comprehensive strategy aligned with your objectives and budget.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h4>Implementation</h4>
+                        <p>We execute the plan with precision, keeping you informed at every milestone.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h4>Ongoing Support</h4>
+                        <p>Continuous monitoring, optimization, and support to ensure sustained success.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="services-container">
+            <div class="services-cta">
+                <h2>Ready to Transform Your Operations?</h2>
+                <p>Let us handle your backend operations while you focus on what matters most - growing your business. Get started with a free consultation today.</p>
+                <a href="contact.html" class="cta-button-enhanced">Request a Free Quote</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column footer-logo">
+                    <div class="logo" style="color: white; margin-bottom: 1.5rem;">
+                        <img src="./assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img" style="height: 50px;">
+                        <span>Whitezebra Consulting</span>
+                    </div>
+                    <p>Your trusted offshore operations partner delivering premium backend support services for digital businesses worldwide.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/whitezebraconsulting/"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="ourteam.html">Our Team</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services.html#digital-marketing">Digital Marketing</a></li>
+                        <li><a href="services.html#ecommerce">E-Commerce Management</a></li>
+                        <li><a href="services.html#graphic-design">Graphic Design</a></li>
+                        <li><a href="services.html#admin">Admin Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column contact-info">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Phulbari Nagar Marg, Kathmandu 44600, Nepal</p>
+                    <p><i class="fas fa-phone"></i> +977-9851324698</p>
+                    <p><i class="fas fa-envelope"></i> info.whitezebraconsulting@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 5:30 AM - 2:00 PM (NST)</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Whitezebra Consulting Pvt. Ltd. All rights reserved.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.8rem;">Designed with excellence for business growth</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Add active class to current page
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
