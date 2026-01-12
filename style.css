@@ -154,6 +154,16 @@ nav.hide-nav {
     bottom: -5px;
     transition: var(--transition);
 }
+/* Active Navigation Link */
+.nav-links a.active {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.nav-links a.active:after {
+    width: 100%;
+    background: var(--accent);
+}
 
 .nav-links a:hover:after {
     width: 100%;
@@ -681,6 +691,16 @@ footer {
     .nav-links a:after {
         display: none;
     }
+/* Active Navigation Link */
+.nav-links a.active {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.nav-links a.active:after {
+    width: 100%;
+    background: var(--accent);
+}
     
     .mobile-menu {
         display: flex;
