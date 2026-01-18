@@ -759,23 +759,7 @@ body {
     }
 }
 
-/* Removed white box styling from footer contact section */
-footer .contact-info {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-}
-
-footer .contact-info h3,
-footer .contact-info p {
-    color: white !important;
-}
-
-footer .contact-info p i {
-    color: rgba(255, 255, 255, 0.8) !important;
-}
-    
+ 
 /* Responsive Design - Mobile Optimizations */
 @media (max-width: 992px) {
     .contact-hero {

@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build:blog"
+  publish = "."
+
+[[redirects]]
+  from = "/src/blog-post.html"
+  to = "/src/:slug.html"
+  status = 301
+  force = false

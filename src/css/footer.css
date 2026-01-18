@@ -66,14 +66,14 @@ footer {
     padding-left: 5px;
 }
 
-.contact-info p {
+.footer-contact p {
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 0.8rem;
     display: flex;
     align-items: center;
 }
 
-.contact-info i {
+.footer-contact i {
     margin-right: 10px;
     color: var(--accent);
     width: 20px;
