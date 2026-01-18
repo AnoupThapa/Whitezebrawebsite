@@ -163,7 +163,6 @@
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="services.html">Services</a></li>
-                <li><a href="ourteam.html">Our Team</a></li>
                 <li><a href="blog.html" class="active">Blog</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -213,7 +212,6 @@
                         <li><a href="../index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="services.html">Services</a></li>
-                        <li><a href="ourteam.html">Our Team</a></li>
                         <li><a href="blog.html" class="active">Blog</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
@@ -229,7 +227,7 @@
                     </ul>
                 </div>
                 
-                <div class="footer-column contact-info">
+                <div class="footer-column footer-contact">
                     <h3>Contact Us</h3>
                     <p><i class="fas fa-map-marker-alt"></i> Phulbari Nagar Marg, Kathmandu 44600, Nepal</p>
                     <p><i class="fas fa-phone"></i> +977-9851324698</p>
@@ -247,6 +245,19 @@
 
     <script src="../script.js"></script>
     <script>
+        // Helper function to update meta tags
+        function updateMetaTag(attribute, key, content) {
+            let element = document.querySelector(`meta[${attribute}="${key}"]`);
+            if (element) {
+                element.setAttribute('content', content);
+            } else {
+                element = document.createElement('meta');
+                element.setAttribute(attribute, key);
+                element.setAttribute('content', content);
+                document.head.appendChild(element);
+            }
+        }
+
         // Load blog post dynamically
         async function loadBlogPost() {
             // Get slug from URL parameter
@@ -265,9 +276,47 @@
                 
                 const post = await response.json();
 
-                // Update page title and meta
-                document.title = `${post.title} - Whitezebra Consulting`;
-                document.querySelector('meta[name="description"]').content = post.seo.metaDescription;
+                
+                // Auto-generate SEO fields if missing
+                if (!post.seo) {
+                    post.seo = {};
+                }
+                if (!post.seo.metaTitle) {
+                    post.seo.metaTitle = `${post.title} | Whitezebra Consulting`;
+                }
+                if (!post.seo.metaDescription) {
+                    post.seo.metaDescription = post.excerpt || post.content.introduction.substring(0, 155);
+                }
+                if (!post.seo.keywords) {
+                    post.seo.keywords = post.tags || [];
+                }
+
+                // Update all meta tags dynamically
+                document.title = post.seo.metaTitle;
+                
+                // Basic meta tags
+                updateMetaTag('name', 'description', post.seo.metaDescription);
+                updateMetaTag('name', 'keywords', post.seo.keywords.join(', '));
+                updateMetaTag('name', 'author', post.author);
+                
+                // Open Graph meta tags
+                const baseUrl = 'https://pujanjoci.github.io/WhiteZebraConsulting';
+                const pageUrl = `${baseUrl}/src/blog-post.html?slug=${post.slug}`;
+                const imageUrl = post.image ? `${baseUrl}/src/blogs_images/${post.image}` : `${baseUrl}/src/assets/whitezebra.jpeg`;
+                
+                updateMetaTag('property', 'og:type', 'article');
+                updateMetaTag('property', 'og:url', pageUrl);
+                updateMetaTag('property', 'og:title', post.seo.metaTitle);
+                updateMetaTag('property', 'og:description', post.seo.metaDescription);
+                updateMetaTag('property', 'og:image', imageUrl);
+                
+                // Twitter Card meta tags
+                updateMetaTag('property', 'twitter:card', 'summary_large_image');
+                updateMetaTag('property', 'twitter:url', pageUrl);
+                updateMetaTag('property', 'twitter:title', post.seo.metaTitle);
+                updateMetaTag('property', 'twitter:description', post.seo.metaDescription);
+                updateMetaTag('property', 'twitter:image', imageUrl);
+
 
                 // Render header
                 const postHeader = document.getElementById('postHeader');
