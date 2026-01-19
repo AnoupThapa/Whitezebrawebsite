@@ -193,6 +193,7 @@ function generateBlogHTML(post) {
         .post-content p {
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
+            text-align: justify;
         }
 
         .post-introduction {
