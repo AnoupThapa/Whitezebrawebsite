@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHBBRVH6XS"></script>
+    <!-- Performance Optimizations: Reduce DNS lookup time -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    
+    <!-- Google Analytics: Delayed loading to reduce TBT -->
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-YHBBRVH6XS');
+        function loadGA() {
+            if (window.gaLoaded) return;
+            window.gaLoaded = true;
+            var script = document.createElement('script');
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-YHBBRVH6XS';
+            script.defer = true;
+            document.head.appendChild(script);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-YHBBRVH6XS');
+        }
+        ['mousemove','scroll','keydown','click','touchstart'].forEach(e => 
+            window.addEventListener(e, loadGA, {once:true, passive:true})
+        );
+        setTimeout(loadGA, 3000);
     </script>
     <link rel="icon" type="image/jpeg" href="src/assets/whitezebra.jpeg">
     <meta charset="UTF-8">
@@ -30,15 +46,29 @@
     <meta property="twitter:description" content="Premium offshore backend support services for digital businesses. Expert solutions in digital marketing, e-commerce management, and admin support.">
     <meta property="twitter:image" content="https://whitezebraconsulting.com/src/assets/whitezebra.jpeg">
     <title>Whitezebra Consulting Pvt. Ltd - Offshore Operations Partner</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    
+    <!-- Critical CSS: Inline for instant rendering -->
+    <style>
+    :root{--primary:#1a365d;--secondary:#2d6bc9;--accent:#38b2ac;--dark:#1e293b;--gray:#64748b}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.6;color:var(--dark);background:#fff;overflow-x:hidden;display:flex;flex-direction:column}main{flex:1 0 auto}nav{position:fixed;top:0;left:0;width:100%;background:rgba(255,255,255,.98);box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:1000}.nav-container{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;max-width:1200px;margin:0 auto}.logo{display:flex;align-items:center;font-weight:700;color:var(--primary)}.logo-img{height:45px;width:45px;margin-right:12px;object-fit:contain}.logo-text{font-size:1.5rem;font-weight:700;color:var(--primary)}.nav-links{display:flex;gap:2rem}.nav-links a{font-weight:500;text-decoration:none;color:inherit}.hero{background:linear-gradient(135deg,var(--primary) 0%,#2c5282 100%);color:#fff;height:100vh;min-height:700px;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:80px}.hero-content{max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:2;width:100%;padding:0 1.5rem}h1{font-size:3rem;margin-bottom:1.5rem;color:#fff;line-height:1.1;font-weight:700}.hero p{font-size:1.3rem;max-width:700px;margin:0 auto 2.5rem;color:rgba(255,255,255,.9)}.hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}.cta-button{display:inline-block;background:linear-gradient(to right,var(--accent),#319795);color:#fff;padding:1rem 2.5rem;border-radius:50px;font-weight:600;font-size:1.1rem;text-decoration:none;box-shadow:0 6px 15px rgba(56,178,172,.3)}.secondary-button{background:transparent;border:2px solid #fff;color:#fff}.mobile-menu{display:none}@media (max-width:768px){.nav-links{display:none}.mobile-menu{display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;width:30px;height:24px;position:relative;z-index:1001}.bar{position:absolute;width:100%;height:3px;background:var(--primary);border-radius:2px}.bar1{top:0}.bar2{top:50%;transform:translateY(-50%)}.bar3{bottom:0}h1{font-size:2.5rem}.hero p{font-size:1.1rem}}
+    </style>
+    
+    <!-- Preload main CSS for faster loading -->
+    <link rel="preload" href="style.css" as="style">
+    
+    <!-- Async Font Awesome: Prevents render blocking -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <!-- Main CSS loads after critical CSS -->
+    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
 </head>
 <body>
     <!-- Navigation -->
     <nav id="mainNav">
         <div class="nav-container">
             <div class="logo">
-                <img src="./src/assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img">
+                <img src="./src/assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img" width="45" height="45" loading="eager">
                 <a href="index.html" class="logo-text">Whitezebra Consulting</a>
             </div>
             <ul class="nav-links" id="navLinks">
@@ -206,8 +236,8 @@
                                 JD
                             </div>
                             <div>
-                                <h4>John Davis</h4>
-                                <p>CEO, Retail Solutions Inc.</p>
+                                <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem; color: var(--dark);">John Davis</p>
+                                <p style="margin: 0;">CEO, Retail Solutions Inc.</p>
                             </div>
                         </div>
                     </div>
@@ -230,12 +260,12 @@
             <div class="footer-content">
                 <div class="footer-column footer-logo">
                     <div class="logo" style="color: white; margin-bottom: 1.5rem;">
-                        <img src="./src/assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img" style="height: 50px;">
+                        <img src="./src/assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img" style="height: 50px;" width="50" height="50" loading="lazy">
                         <span>Whitezebra Consulting</span>
                     </div>
                     <p>Your trusted offshore operations partner delivering premium backend support services for digital businesses worldwide.</p>
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/company/whitezebraconsulting/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.linkedin.com/company/whitezebraconsulting/" aria-label="Visit our LinkedIn company page" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 
@@ -276,6 +306,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Defer JavaScript: Load after HTML parsing -->
+    <script src="script.js" defer></script>
 </body>
 </html>
