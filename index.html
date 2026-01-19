@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHBBRVH6XS"></script>
+    <!-- Performance Optimizations -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    
+    <!-- Google tag (gtag.js) - Deferred for better performance -->
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-YHBBRVH6XS"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -30,7 +35,9 @@
     <meta property="twitter:description" content="Premium offshore backend support services for digital businesses. Expert solutions in digital marketing, e-commerce management, and admin support.">
     <meta property="twitter:image" content="https://whitezebraconsulting.com/src/assets/whitezebra.jpeg">
     <title>Whitezebra Consulting Pvt. Ltd - Offshore Operations Partner</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Optimize Font Awesome loading -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -38,7 +45,7 @@
     <nav id="mainNav">
         <div class="nav-container">
             <div class="logo">
-                <img src="./src/assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img">
+                <img src="./src/assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img" width="45" height="45" loading="eager">
                 <a href="index.html" class="logo-text">Whitezebra Consulting</a>
             </div>
             <ul class="nav-links" id="navLinks">
@@ -230,12 +237,12 @@
             <div class="footer-content">
                 <div class="footer-column footer-logo">
                     <div class="logo" style="color: white; margin-bottom: 1.5rem;">
-                        <img src="./src/assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img" style="height: 50px;">
+                        <img src="./src/assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img" style="height: 50px;" width="50" height="50" loading="lazy">
                         <span>Whitezebra Consulting</span>
                     </div>
                     <p>Your trusted offshore operations partner delivering premium backend support services for digital businesses worldwide.</p>
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/company/whitezebraconsulting/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.linkedin.com/company/whitezebraconsulting/" aria-label="Visit our LinkedIn page"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 
@@ -276,6 +283,22 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+    <!-- Polyfill for async CSS loading -->
+    <script>
+        var loadDeferredStyles = function() {
+            var addStylesNode = document.getElementById("deferred-styles");
+            if (addStylesNode) {
+                var replacement = document.createElement("div");
+                replacement.innerHTML = addStylesNode.textContent;
+                document.body.appendChild(replacement);
+                addStylesNode.parentElement.removeChild(addStylesNode);
+            }
+        };
+        var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+        else window.addEventListener('load', loadDeferredStyles);
+    </script>
 </body>
 </html>

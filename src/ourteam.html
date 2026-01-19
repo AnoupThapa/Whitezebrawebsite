@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Performance Optimizations -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpeg" href="./assets/whitezebra.jpeg">
@@ -22,7 +27,9 @@
     <meta property="twitter:image" content="https://whitezebraconsulting.com/src/assets/whitezebra.jpeg">
     <meta name="description" content="Meet the talented team behind Whitezebra Consulting - experts in offshore operations and backend support services.">
     <title>Our Team - Whitezebra Consulting</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Optimize Font Awesome loading -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <link rel="stylesheet" href="../style.css">`n    <link rel="stylesheet" href="./css/footer.css">
     <style>
         /* Team Page Specific Styles */
@@ -383,7 +390,7 @@
                     </div>
                     <p>Your trusted offshore operations partner delivering premium backend support services for digital businesses worldwide.</p>
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/company/whitezebraconsulting/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.linkedin.com/company/whitezebraconsulting/" aria-label="Visit our LinkedIn page"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 
@@ -425,7 +432,7 @@
         </div>
     </footer>
 
-    <script src="../script.js"></script>
+    <script src="../script.js" defer></script>
 </body>
 </html>
 
