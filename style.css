@@ -220,7 +220,9 @@ nav.hide-nav {
 
 /* Hero Section - Full Screen Height */
 .hero {
-    background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
+    background: linear-gradient(135deg, #1a365d 0%, #2c5282 25%, #2d3748 50%, #1e40af 75%, #1a365d 100%);
+    background-size: 300% 300%;
+    animation: heroGradient 15s ease infinite;
     color: white;
     height: 100vh;
     min-height: 700px;
@@ -230,6 +232,12 @@ nav.hide-nav {
     overflow: hidden;
     margin-top: 0;
     padding-top: 80px; /* Account for fixed navbar */
+}
+
+@keyframes heroGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .hero:before {
@@ -341,30 +349,65 @@ nav.hide-nav {
     align-items: center;
 }
 
+/* Stats Container - Glassmorphism Box */
+.stats-container {
+    background: linear-gradient(135deg, rgba(26, 54, 93, 0.95) 0%, rgba(45, 107, 201, 0.9) 50%, rgba(56, 178, 172, 0.85) 100%);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 15px 40px rgba(26, 54, 93, 0.25), 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
 .stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
 }
 
-.stat-item {
+.stats-container .stat-item {
     text-align: center;
-    padding: 2rem;
-    background: white;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
+    padding: 1.8rem 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.stat-item:hover {
-    transform: translateY(-5px);
+.stats-container .stat-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .stat-number {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--secondary);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 0.5rem;
+}
+
+.stats-container .stat-item p {
+    color: var(--gray);
+    font-weight: 500;
+    margin: 0;
 }
 
 /* Services Section */
@@ -456,9 +499,36 @@ nav.hide-nav {
     margin-right: auto;
 }
 
-/* Testimonial Section */
+/* Testimonial Section - Google Reviews */
 .testimonial-section {
     background-color: var(--light);
+}
+
+.google-reviews-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+}
+
+.google-logo {
+    height: 28px;
+    width: auto;
+}
+
+.reviews-badge {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gray);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .testimonial-slider {
@@ -469,30 +539,78 @@ nav.hide-nav {
 
 .testimonial {
     background: white;
-    padding: 2.5rem;
-    border-radius: 10px;
+    padding: 2rem;
+    border-radius: 16px;
     box-shadow: var(--shadow);
-    text-align: center;
+    text-align: left;
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.testimonial.google-review {
+    position: relative;
+}
+
+.testimonial.google-review:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.review-stars {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.review-stars i {
+    color: #FBBC04;
+    font-size: 1.1rem;
+}
+
+.testimonial p {
+    flex: 1;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
 }
 
 .client-info {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-top: 2rem;
+    margin-top: auto;
 }
 
 .client-avatar {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background-color: var(--secondary);
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
     margin-right: 1rem;
+}
+
+@media (max-width: 768px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .testimonial {
+        padding: 1.5rem;
+    }
+    
+    .google-logo {
+        height: 22px;
+    }
 }
 
 /* CTA Section */
