@@ -65,7 +65,7 @@
                         <span class="label">Response Time</span>
                     </div>
                     <div class="hero-stat">
-                        <span class="number">99%</span>
+                        <span class="number">100%</span>
                         <span class="label">Client Satisfaction</span>
                     </div>
                     <div class="hero-stat">
@@ -96,7 +96,7 @@
                             <h4>Office Location</h4>
                             <p>Phulbari Nagar Marg, Kathmandu 44600, Nepal</p>
                             <span class="response-time">Serving Clients Globally</span>
-                            <a href="https://www.google.com/maps/place/Waste+Concern+Pvt+Ltd/@27.675189,85.3419043,19z/data=!3m1!4b1!4m6!3m5!1s0x39eb19d0b67dd197:0x6095cee7ace97cc6!8m2!3d27.675189!4d85.342548!16s%2Fg%2F11qqyglk1y?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
+                            <a href="https://maps.app.goo.gl/tYzJSMx4No42P7ke8" 
                                target="_blank" 
                                rel="noopener noreferrer"
                                class="directions-btn">
@@ -145,19 +145,7 @@
                         <span class="hours-time">Critical Support Available</span>
                     </div>
                 </div>
-                
-                <!-- Enhanced Map -->
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d370.46007630469!2d85.34216973484502!3d27.67492623145876!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19f2804a02bf%3A0x85468199859b2d8d!2sKoteshwor%2C%20Kathmandu%2044600!5e1!3m2!1sen!2snp!4v1763445238284!5m2!1sen!2snp" 
-                    width="100%" 
-                    height="280" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade"
-                    title="Whitezebra Consulting Location">
-                    </iframe>
-                </div>
+
             </div>
             
             <!-- Enhanced Contact Form -->
@@ -332,6 +320,28 @@
     <script>
         // Add active class to current page in navigation
         document.addEventListener('DOMContentLoaded', function() {
+            // Map loading animation
+            const mapIframe = document.querySelector('.map-container iframe');
+            
+            if (mapIframe) {
+                // Create loading overlay
+                const loadingDiv = document.createElement('div');
+                loadingDiv.className = 'map-loading active';
+                loadingDiv.innerHTML = `
+                    <div class="map-loading-spinner"></div>
+                    <div class="map-loading-text">Loading map...</div>
+                `;
+                
+                mapIframe.parentNode.insertBefore(loadingDiv, mapIframe);
+                
+                // Remove loading overlay when iframe loads
+                mapIframe.addEventListener('load', function() {
+                    loadingDiv.classList.remove('active');
+                    setTimeout(() => {
+                        loadingDiv.style.display = 'none';
+                    }, 300);
+                });
+            }
             const currentPage = window.location.pathname.split('/').pop();
             const navLinks = document.querySelectorAll('.nav-links a');
             
