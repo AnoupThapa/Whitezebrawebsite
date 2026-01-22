@@ -340,6 +340,20 @@
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
+                    // Rate limiting: 10 minutes (10 * 60 * 1000 ms)
+                    const COOLDOWN_MS = 10 * 60 * 1000;
+                    const lastSubmission = localStorage.getItem('lastFormSubmission');
+                    const now = Date.now();
+
+                    if (lastSubmission) {
+                        const timeElapsed = now - parseInt(lastSubmission);
+                        if (timeElapsed < COOLDOWN_MS) {
+                            const minutesLeft = Math.ceil((COOLDOWN_MS - timeElapsed) / 60000);
+                            showNotification(`Message can't be sent again for ${minutesLeft} minute(s).`, 'error');
+                            return;
+                        }
+                    }
+
                     // Get form elements
                     const name = document.getElementById('name').value;
                     const email = document.getElementById('email').value;
@@ -387,6 +401,9 @@
                         })
                     })
                     .then(() => {
+                        // Store submission timestamp for rate limiting
+                        localStorage.setItem('lastFormSubmission', Date.now().toString());
+
                         // Show success message with animation
                         successMessage.style.display = 'block';
                         
