@@ -65,7 +65,7 @@
                         <span class="label">Response Time</span>
                     </div>
                     <div class="hero-stat">
-                        <span class="number">100%</span>
+                        <span class="number">99%</span>
                         <span class="label">Client Satisfaction</span>
                     </div>
                     <div class="hero-stat">
@@ -96,7 +96,7 @@
                             <h4>Office Location</h4>
                             <p>Phulbari Nagar Marg, Kathmandu 44600, Nepal</p>
                             <span class="response-time">Serving Clients Globally</span>
-                            <a href="https://maps.app.goo.gl/tYzJSMx4No42P7ke8" 
+                            <a href="https://www.google.com/maps/place/Waste+Concern+Pvt+Ltd/@27.675189,85.3419043,19z/data=!3m1!4b1!4m6!3m5!1s0x39eb19d0b67dd197:0x6095cee7ace97cc6!8m2!3d27.675189!4d85.342548!16s%2Fg%2F11qqyglk1y?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
                                target="_blank" 
                                rel="noopener noreferrer"
                                class="directions-btn">
@@ -145,7 +145,6 @@
                         <span class="hours-time">Critical Support Available</span>
                     </div>
                 </div>
-
             </div>
             
             <!-- Enhanced Contact Form -->
@@ -159,7 +158,11 @@
                     <p>Thank you for contacting Whitezebra Consulting. Our team will review your inquiry and get back to you within 24 hours.</p>
                 </div>
                 
-                <form class="contact-form" name="contact" method="POST" data-netlify="true" id="contactForm">
+                <form class="contact-form" name="contact" method="POST" data-netlify="true" id="contactForm" action="/" netlify netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contact" />
+                    <p style="display:none;">
+                        <label>Don’t fill this out: <input name="bot-field" /></label>
+                    </p>
                     <div class="form-group">
                         <label for="name"><i class="far fa-user"></i> Full Name <span>*</span></label>
                         <input type="text" id="name" name="name" placeholder="Enter your full name" required>
@@ -320,28 +323,6 @@
     <script>
         // Add active class to current page in navigation
         document.addEventListener('DOMContentLoaded', function() {
-            // Map loading animation
-            const mapIframe = document.querySelector('.map-container iframe');
-            
-            if (mapIframe) {
-                // Create loading overlay
-                const loadingDiv = document.createElement('div');
-                loadingDiv.className = 'map-loading active';
-                loadingDiv.innerHTML = `
-                    <div class="map-loading-spinner"></div>
-                    <div class="map-loading-text">Loading map...</div>
-                `;
-                
-                mapIframe.parentNode.insertBefore(loadingDiv, mapIframe);
-                
-                // Remove loading overlay when iframe loads
-                mapIframe.addEventListener('load', function() {
-                    loadingDiv.classList.remove('active');
-                    setTimeout(() => {
-                        loadingDiv.style.display = 'none';
-                    }, 300);
-                });
-            }
             const currentPage = window.location.pathname.split('/').pop();
             const navLinks = document.querySelectorAll('.nav-links a');
             
@@ -387,8 +368,25 @@
                         return;
                     }
                     
-                    // Simulate network delay
-                    setTimeout(() => {
+                    // Create encode helper
+                    const encode = (data) => {
+                        return Object.keys(data)
+                            .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+                            .join("&");
+                    }
+
+                    const formData = new FormData(contactForm);
+                    
+                    // Netlify AJAX submission
+                    fetch("/", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                        body: encode({
+                            "form-name": "contact",
+                            ...Object.fromEntries(formData)
+                        })
+                    })
+                    .then(() => {
                         // Show success message with animation
                         successMessage.style.display = 'block';
                         
@@ -398,30 +396,26 @@
                             block: 'center' 
                         });
                         
-                        // Reset form after 5 seconds
-                        setTimeout(() => {
-                            contactForm.reset();
-                            successMessage.style.display = 'none';
-                        }, 5000);
-                        
-                        // Reset button
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.disabled = false;
-                        
-                        // Log submission for demo
-                        console.log('Form submitted successfully:', {
-                            name: name,
-                            email: email,
-                            company: document.getElementById('company').value,
-                            service: document.getElementById('service').value,
-                            budget: document.getElementById('budget').value,
-                            message: message
-                        });
-                        
-                        // Show success notification
+                        // Reset form and notification after success
+                        contactForm.reset();
                         showNotification('Your message has been sent successfully! We\'ll contact you within 24 hours.', 'success');
                         
-                    }, 1500);
+                        // Hide success message again after 5 seconds
+                        setTimeout(() => {
+                            if (successMessage.style.display === 'block') {
+                                successMessage.style.display = 'none';
+                            }
+                        }, 5000);
+                    })
+                    .catch(error => {
+                        showNotification('Something went wrong. Please try again or email us directly.', 'error');
+                        console.error('Form submission error:', error);
+                    })
+                    .finally(() => {
+                        // Always restore button state
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    });
                 });
             }
             
