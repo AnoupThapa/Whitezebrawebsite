@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="./assets/whitezebra.jpeg">
+    <title>404 - Page Not Found | Whitezebra Consulting</title>
+    <meta name="description" content="Page not found. Return to Whitezebra Consulting home page.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <style>
+        .error-page-container {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1a2a4a 0%, #2d4379 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+        
+        .error-title {
+            font-size: 2.5rem;
+            color: #1a2a4a;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .error-message {
+            font-size: 1.2rem;
+            color: #4a5568;
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+        
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #1a2a4a 0%, #2d4379 100%);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(26, 42, 74, 0.2);
+        }
+        
+        .home-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(26, 42, 74, 0.3);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 6rem;
+            }
+            .error-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="mainNav">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="./assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img">
+                <a href="../index.html" class="logo-text">Whitezebra Consulting</a>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="blog.html">Blogs</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu" onclick="toggleMenu()">
+                <span class="bar bar1"></span>
+                <span class="bar bar2"></span>
+                <span class="bar bar3"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="error-page-container">
+            <div class="error-code">404</div>
+            <h1 class="error-title">Page Not Found</h1>
+            <p class="error-message">Oops! The page you are looking for uses an incorrect link or simply doesn't exist anymore. Let's get you back on track.</p>
+            <a href="../index.html" class="home-btn">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+        </div>
+    </main>
+
+   <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column footer-logo">
+                    <div class="logo" style="color: white; margin-bottom: 1.5rem;">
+                        <img src="./assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img" style="height: 50px;">
+                        <span>Whitezebra Consulting</span>
+                    </div>
+                    <p>Your trusted offshore operations partner delivering premium backend support services for digital businesses worldwide.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/whitezebraconsulting/"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="blog.html">Blogs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services.html#digital-marketing">Digital Marketing</a></li>
+                        <li><a href="services.html#ecommerce">E-Commerce Management</a></li>
+                        <li><a href="services.html#graphic-design">Graphic Design</a></li>
+                        <li><a href="services.html#admin">Admin Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Phulbari Nagar Marg, Kathmandu 44600, Nepal</p>
+                    <p><i class="fas fa-phone"></i> +977-9851324698</p>
+                    <p><i class="fas fa-envelope"></i> info.whitezebraconsulting@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 5:30 AM - 2:00 PM (NST)</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Whitezebra Consulting Pvt. Ltd. All rights reserved.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.8rem;">Designed with excellence for business growth</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

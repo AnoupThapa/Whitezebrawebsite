@@ -65,7 +65,7 @@
                         <span class="label">Response Time</span>
                     </div>
                     <div class="hero-stat">
-                        <span class="number">99%</span>
+                        <span class="number">100%</span>
                         <span class="label">Client Satisfaction</span>
                     </div>
                     <div class="hero-stat">
@@ -158,11 +158,7 @@
                     <p>Thank you for contacting Whitezebra Consulting. Our team will review your inquiry and get back to you within 24 hours.</p>
                 </div>
                 
-                <form class="contact-form" name="contact" method="POST" data-netlify="true" id="contactForm" action="/" netlify netlify-honeypot="bot-field">
-                    <input type="hidden" name="form-name" value="contact" />
-                    <p style="display:none;">
-                        <label>Don’t fill this out: <input name="bot-field" /></label>
-                    </p>
+                <form class="contact-form" id="contactForm" name="contact">
                     <div class="form-group">
                         <label for="name"><i class="far fa-user"></i> Full Name <span>*</span></label>
                         <input type="text" id="name" name="name" placeholder="Enter your full name" required>
@@ -197,18 +193,6 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="budget"><i class="fas fa-dollar-sign"></i> Project Budget Range</label>
-                        <select id="budget" name="budget">
-                            <option value="" selected disabled>Select budget range</option>
-                            <option value="under-1000">Under $1,000</option>
-                            <option value="1000-5000">$1,000 - $5,000</option>
-                            <option value="5000-10000">$5,000 - $10,000</option>
-                            <option value="10000+">$10,000+</option>
-                            <option value="negotiable">To be discussed</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
                         <label for="message"><i class="far fa-edit"></i> Project Requirements <span>*</span></label>
                         <textarea id="message" name="message" placeholder="Please describe your project requirements, timeline, goals, and any specific needs..." required></textarea>
                     </div>
@@ -227,7 +211,7 @@
         </div>
         
         <!-- Enhanced Contact Methods -->
-        <section style="max-width: 1200px; margin: 0 auto; padding: 0 1.5rem 6rem;">
+        <section class="contact-methods-section">
             <div class="contact-methods">
                 <div class="method-card">
                     <div class="method-icon">
@@ -332,32 +316,37 @@
                 }
             });
             
-            // Enhanced Form submission handler
+            // Enhanced Form submission handler with Google Sheets integration
             const contactForm = document.getElementById('contactForm');
             const successMessage = document.getElementById('successMessage');
+            const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzCtkDSo_AvMrh5uE2_2WtEHZGtTkM8jXC5lndILEqXCCfF6-jyimLHpF4oYUQ1MXde/exec';
             
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    
-                    // Rate limiting: 10 minutes (10 * 60 * 1000 ms)
-                    const COOLDOWN_MS = 10 * 60 * 1000;
-                    const lastSubmission = localStorage.getItem('lastFormSubmission');
-                    const now = Date.now();
 
-                    if (lastSubmission) {
-                        const timeElapsed = now - parseInt(lastSubmission);
-                        if (timeElapsed < COOLDOWN_MS) {
-                            const minutesLeft = Math.ceil((COOLDOWN_MS - timeElapsed) / 60000);
-                            showNotification(`Message can't be sent again for ${minutesLeft} minute(s).`, 'error');
+                    // Check for cooldown
+                    const lastSubmissionTime = localStorage.getItem('lastSubmissionTime');
+                    if (lastSubmissionTime) {
+                        const timeSinceLastSubmission = Date.now() - parseInt(lastSubmissionTime);
+                        const cooldownTime = 10 * 60 * 1000; // 10 minutes in milliseconds
+                        
+                        if (timeSinceLastSubmission < cooldownTime) {
+                            const remainingTime = Math.ceil((cooldownTime - timeSinceLastSubmission) / 60000);
+                            showNotification(`Please wait ${remainingTime} minute${remainingTime > 1 ? 's' : ''} before sending another request.`, 'error');
                             return;
                         }
                     }
-
+                    
                     // Get form elements
                     const name = document.getElementById('name').value;
                     const email = document.getElementById('email').value;
+                    const phone = document.getElementById('phone').value;
+                    const company = document.getElementById('company').value;
+                    const service = document.getElementById('service').value;
+                    // Budget field was removed
                     const message = document.getElementById('message').value;
+                    const newsletter = document.getElementById('newsletter').checked;
                     const submitBtn = document.querySelector('.submit-btn');
                     
                     // Show loading state
@@ -382,28 +371,34 @@
                         return;
                     }
                     
-                    // Create encode helper
-                    const encode = (data) => {
-                        return Object.keys(data)
-                            .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-                            .join("&");
-                    }
-
-                    const formData = new FormData(contactForm);
+                    // Prepare data for Google Sheets (URL Encoded for no-cors reliability)
+                    const formDataObject = new URLSearchParams();
+                    formDataObject.append('name', name);
+                    formDataObject.append('email', email);
+                    formDataObject.append('phone', phone || '');
+                    formDataObject.append('company', company || '');
+                    formDataObject.append('service', service || '');
+                    // Budget removed
+                    formDataObject.append('message', message);
+                    formDataObject.append('newsletter', newsletter ? 'Yes' : 'No');
+                    formDataObject.append('source', 'Whitezebra Consulting Website');
                     
-                    // Netlify AJAX submission
-                    fetch("/", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                        body: encode({
-                            "form-name": "contact",
-                            ...Object.fromEntries(formData)
-                        })
+                    // Submit to Google Sheets
+                    fetch(GOOGLE_SHEETS_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: formDataObject.toString(),
+                        mode: 'no-cors'  // Required for Google Apps Script CORS
                     })
                     .then(() => {
-                        // Store submission timestamp for rate limiting
-                        localStorage.setItem('lastFormSubmission', Date.now().toString());
+                        // Note: With no-cors mode, we can't read the response
+                        // We assume success if no error is thrown
 
+                        // Set cooldown timestamp
+                        localStorage.setItem('lastSubmissionTime', Date.now().toString());
+                        
                         // Show success message with animation
                         successMessage.style.display = 'block';
                         

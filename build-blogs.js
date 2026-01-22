@@ -9,7 +9,7 @@ const path = require('path');
 // Configuration
 const BLOG_FOLDER = './src/blogs';
 const OUTPUT_FOLDER = './src';
-const BASE_URL = 'https://whitezebraconsulting.netlify.app';
+const BASE_URL = 'https://whitezebraconsulting.com';
 
 // Read all blog JSON files
 function getBlogPosts() {
@@ -298,6 +298,80 @@ function generateBlogHTML(post, allPosts) {
 </html>`;
 }
 
+// Generate Sitemap
+function generateSitemap(allPosts) {
+    console.log('🗺️  Generating sitemap.xml...');
+    
+    const today = new Date().toISOString().split('T')[0];
+    
+    let sitemapXML = `<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    <!-- Home Page -->
+    <url>
+        <loc>${BASE_URL}/</loc>
+        <lastmod>${today}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- About Page -->
+    <url>
+        <loc>${BASE_URL}/src/about.html</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Services Page -->
+    <url>
+        <loc>${BASE_URL}/src/services.html</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Blog Page -->
+    <url>
+        <loc>${BASE_URL}/src/blog.html</loc>
+        <lastmod>${today}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Contact Page -->
+    <url>
+        <loc>${BASE_URL}/src/contact.html</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Blog Posts -->`;
+
+    allPosts.forEach(post => {
+        if (post.slug) {
+            sitemapXML += `
+    <url>
+        <loc>${BASE_URL}/src/${post.slug}.html</loc>
+        <lastmod>${post.date || today}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>`;
+        }
+    });
+
+    sitemapXML += `
+</urlset>`;
+
+    fs.writeFileSync('./sitemap.xml', sitemapXML, 'utf-8');
+    console.log('✅ Generated: sitemap.xml');
+}
+
 // Main execution
 console.log('🚀 Generating blog HTML files with 3-column layout...\\n');
 
@@ -333,5 +407,8 @@ const indexPath = path.join(BLOG_FOLDER, 'blog-index.json');
 fs.writeFileSync(indexPath, JSON.stringify(blogIndex, null, 2), 'utf-8');
 console.log(`\\n📑 Generated: blog-index.json with ${blogFileNames.length} posts`);
 
-console.log(`\\n✨ Successfully generated ${generatedCount} blog HTML files with 3-column layout!`);
+// Generate Sitemap
+generateSitemap(allPosts);
+
+console.log(`\\n✨ Successfully generated ${generatedCount} blog HTML files and updated sitemap!`);
 console.log('📍 Files saved to: ./src/\\n');

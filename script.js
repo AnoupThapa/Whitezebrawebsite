@@ -104,8 +104,10 @@ function setHeroHeight() {
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
     
-    // Set hero section height to full viewport
-    hero.style.height = `${window.innerHeight}px`;
+    // Set hero section height to full viewport if it exists
+    if (hero) {
+        hero.style.height = `${window.innerHeight}px`;
+    }
 }
 
 // Set initial hero height
