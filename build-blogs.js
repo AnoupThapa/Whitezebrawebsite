@@ -53,6 +53,12 @@ function getRelatedPosts(currentPost, allPosts, limit = 3) {
         .slice(0, limit);
 }
 
+// Helper to highlight the brand name in text
+function highlightBrand(text) {
+    if (!text) return '';
+    return text.replace(/White\s*Zebra/gi, '<span class="brand-color">Whitezebra</span>');
+}
+
 // Generate HTML for a blog post with 3-column layout
 function generateBlogHTML(post, allPosts) {
     if (!post.slug || !post.title) {
@@ -86,8 +92,8 @@ function generateBlogHTML(post, allPosts) {
     let contentHTML = '';
     if (post.content?.sections) {
         contentHTML = post.content.sections.map(section => `
-            <h2 id="${slugify(section.heading)}">${section.heading}</h2>
-            <p>${section.content}</p>
+            <h2 id="${slugify(section.heading)}">${highlightBrand(section.heading)}</h2>
+            <p>${highlightBrand(section.content)}</p>
         `).join('');
     }
 
@@ -97,7 +103,7 @@ function generateBlogHTML(post, allPosts) {
         tagsHTML = `
             <div class="post-tags" style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border);">
                 <strong style="color: var(--color-accent-tan); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.75rem;">Tags</strong>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">${post.tags.map(tag => `<span class="tag" style="display: inline-block; padding: 0.35rem 0.85rem; background-color: rgba(194,169,136,0.15); color: var(--color-text-dark); font-size: 0.8rem; font-weight: 500;">${tag}</span>`).join('')}</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">${post.tags.map(tag => `<span class="tag" style="display: inline-block; padding: 0.35rem 0.85rem; background-color: rgba(145, 62, 97, 0.15); color: var(--color-text-dark); font-size: 0.8rem; font-weight: 500;">${tag}</span>`).join('')}</div>
             </div>
         `;
     }
@@ -106,7 +112,7 @@ function generateBlogHTML(post, allPosts) {
     const relatedPosts = getRelatedPosts(post, allPosts);
     let relatedPostsHTML = relatedPosts.length > 0 ? relatedPosts.map(rPost => `
         <div class="related-post" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-border);">
-            <a href="${rPost.slug}.html" class="related-post-title" style="font-family: var(--font-sans); font-size: 0.95rem; font-weight: 600; line-height: 1.4; color: var(--color-text-dark); transition: var(--transition-fast);">${rPost.title}</a>
+            <a href="${rPost.slug}.html" class="related-post-title" style="font-family: var(--font-sans); font-size: 0.95rem; font-weight: 600; line-height: 1.4; color: var(--color-text-dark); transition: var(--transition-fast);">${highlightBrand(rPost.title)}</a>
             <div class="related-post-meta" style="font-size: 0.8rem; color: #777777; margin-top: 0.5rem;">
                 ${new Date(rPost.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} • ${rPost.readTime}
             </div>
@@ -381,7 +387,7 @@ function generateBlogHTML(post, allPosts) {
         Back to Journal
       </a>
 
-      <h1 class="post-title">${post.title}</h1>
+      <h1 class="post-title">${highlightBrand(post.title)}</h1>
 
       <div class="post-meta-items">
         <span>
@@ -394,13 +400,13 @@ function generateBlogHTML(post, allPosts) {
         </span>
         <span>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          ${post.author}
+          ${highlightBrand(post.author)}
         </span>
       </div>
 
       ${post.image ? `<img src="./blogs_images/${post.image}" alt="${post.title}" class="post-image">` : ''}
 
-      <div class="post-excerpt">${post.content?.introduction || post.excerpt || ''}</div>
+      <div class="post-excerpt">${highlightBrand(post.content?.introduction || post.excerpt || '')}</div>
 
       <div class="post-content">${contentHTML}</div>
 
@@ -476,7 +482,7 @@ function generateBlogHTML(post, allPosts) {
     </div>
 
     <div class="container footer-bottom">
-      <p>&copy; 2026 Whitezebra Consulting Pvt. Ltd. All rights reserved.</p>
+      <p>&copy; 2026 Whitezebra Consulting Pvt. Ltd. All rights reserved. | Developed by <a href="https://pujan-joshi.com.np" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; color: inherit;">Pujan Joshi</a></p>
       <p>Nepal Offshore Operations Layer</p>
     </div>
   </footer>

@@ -11,18 +11,18 @@
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 
   /* Colors */
-  --color-bg-cream: #FAF7F2;     /* Warm off-white/cream */
-  --color-text-dark: #111111;    /* Near-black */
-  --color-accent-tan: #C2A988;   /* Muted warm-tan */
-  --color-border: #E5E0D8;       /* Hairline border */
+  --color-bg-cream: #f4f7f5;     /* Light neutral (clean grayish-green tint) */
+  --color-text-dark: #1b221e;    /* Dark neutral (deep charcoal forest-gray) */
+  --color-accent-tan: #913e61;   /* Complementary color (deep pink/magenta) */
+  --color-border: #dce3e0;       /* Hairline border matching cool tones */
   
   /* Brand Specific Colors */
-  --color-brand-green: #429370;  /* Brand logo green */
+  --color-brand-green: #3e916e;  /* Brand logo green */
   
   /* Contrast colors (Dark Panel) */
-  --color-bg-dark: #111111;      /* Near-black for panels */
-  --color-text-light: #FAF7F2;   /* Cream text */
-  --color-border-dark: #222222;  /* Subtler border on dark */
+  --color-bg-dark: #121a17;      /* Dark neutral for panels */
+  --color-text-light: #f4f7f5;   /* Light neutral text */
+  --color-border-dark: #24332d;  /* Subtler border on dark panels */
   
   /* Spacing */
   --spacing-xs: 0.5rem;
@@ -87,6 +87,10 @@ a {
   margin-bottom: 1rem;
 }
 
+.brand-color {
+  color: var(--color-brand-green);
+}
+
 /* Layout Containers */
 .container {
   max-width: 1200px;
@@ -132,7 +136,7 @@ header {
 
 /* Scroll state when past hero */
 header.scrolled {
-  background-color: rgba(250, 247, 242, 0.95);
+  background-color: rgba(244, 247, 245, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--color-border);
   padding: 0.5rem 0;
@@ -159,6 +163,15 @@ header.scrolled .nav-container {
   font-weight: 600;
   color: var(--color-text-dark);
   letter-spacing: -0.01em;
+}
+
+.logo span {
+  color: var(--color-brand-green);
+  transition: var(--transition-fast);
+}
+
+.logo:hover span {
+  color: var(--color-accent-tan);
 }
 
 .logo-img {
@@ -305,32 +318,66 @@ header.scrolled .logo-img {
 
 /* Hero Section */
 .hero {
-  padding-top: 180px;
-  padding-bottom: var(--spacing-xl);
-  min-height: 85vh;
+  padding-top: 120px;
+  padding-bottom: var(--spacing-md);
+  min-height: 100vh;
   display: flex;
   align-items: center;
   position: relative;
+  background: radial-gradient(circle at 10% 20%, rgba(62, 145, 110, 0.04) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(145, 62, 97, 0.04) 0%, transparent 40%);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--spacing-lg);
+  align-items: center;
+  width: 100%;
 }
 
 .hero-content {
-  max-width: 850px;
+  max-width: 100%;
 }
 
 .hero h1 {
-  font-size: clamp(2.8rem, 6vw, 4.8rem);
-  line-height: 1.1;
+  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  line-height: 1.15;
   letter-spacing: -0.03em;
   margin-bottom: 2rem;
   color: var(--color-text-dark);
 }
 
 .hero-desc {
-  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
   line-height: 1.6;
-  color: #333333;
+  color: #3f4a44;
   margin-bottom: 3rem;
-  max-width: 680px;
+  max-width: 600px;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 20px 40px rgba(27, 34, 30, 0.08);
+  border: 1px solid var(--color-border);
+  transition: var(--transition-smooth);
+}
+
+.hero-image:hover {
+  transform: scale(1.015) translateY(-4px);
+  box-shadow: 0 30px 60px rgba(27, 34, 30, 0.12);
 }
 
 /* Comparison Panel (Before/After) */
@@ -477,7 +524,7 @@ header.scrolled .logo-img {
 }
 
 .service-card:hover {
-  background-color: #f3edd9; /* Cream hover state */
+  background-color: #e6edea; /* Cool gray-green hover state */
 }
 
 .service-icon {
@@ -856,7 +903,7 @@ footer {
 .form-group select {
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23111111' stroke-width='1.5' viewBox='0 0 24 24'><path d='M19 9l-7 7-7-7'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%231b221e' stroke-width='1.5' viewBox='0 0 24 24'><path d='M19 9l-7 7-7-7'/></svg>");
   background-repeat: no-repeat;
   background-position: calc(100% - 5px) center;
   padding-right: 1.5rem;
@@ -879,7 +926,7 @@ footer {
 .success-message {
   display: none;
   background-color: #e6f7f4;
-  color: #111111;
+  color: var(--color-text-dark);
   padding: 1.5rem;
   border-left: 3px solid #2ec4b6;
   margin-bottom: 2rem;
@@ -942,7 +989,7 @@ footer {
 }
 
 .blog-card:hover {
-  background-color: #f3edd9;
+  background-color: #e6edea;
 }
 
 .blog-card-category {
@@ -1043,7 +1090,7 @@ footer {
 .post-conclusion {
   margin-top: 3rem;
   padding: 2rem;
-  background-color: rgba(194, 169, 136, 0.1);
+  background-color: rgba(145, 62, 97, 0.08);
   border-left: 2px solid var(--color-accent-tan);
 }
 
@@ -1068,6 +1115,41 @@ footer {
   :root {
     --spacing-xl: 5rem;
     --spacing-lg: 2.5rem;
+  }
+  
+  .hero {
+    padding-top: 140px;
+    padding-bottom: var(--spacing-lg);
+    min-height: 100vh;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    text-align: center;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-image-wrapper {
+    margin-top: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-image {
+    height: 380px;
   }
   
   .about-story-grid {
@@ -1145,6 +1227,15 @@ footer {
 }
 
 @media (max-width: 576px) {
+  .hero {
+    padding-top: 120px;
+    padding-bottom: var(--spacing-md);
+  }
+  
+  .hero-image {
+    height: 280px;
+  }
+
   .services-grid, .blog-grid {
     grid-template-columns: 1fr;
   }
