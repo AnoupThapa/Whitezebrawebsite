@@ -295,6 +295,14 @@ header.scrolled .logo-img {
   color: var(--color-bg-cream);
 }
 
+/* About Page Story Grid */
+.about-story-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
 /* Hero Section */
 .hero {
   padding-top: 180px;
@@ -1060,6 +1068,11 @@ footer {
   :root {
     --spacing-xl: 5rem;
     --spacing-lg: 2.5rem;
+  }
+  
+  .about-story-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
   }
   
   .nav-links {

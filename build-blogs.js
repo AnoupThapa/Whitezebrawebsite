@@ -306,7 +306,10 @@ function generateBlogHTML(post, allPosts) {
         gap: 2.5rem;
         margin-top: 100px;
       }
-      .toc-sidebar, .related-sidebar {
+      .toc-sidebar {
+        display: none;
+      }
+      .related-sidebar {
         position: static;
       }
     }
@@ -340,11 +343,7 @@ function generateBlogHTML(post, allPosts) {
   <header id="mainHeader">
     <div class="container nav-container">
       <a href="../index.html" class="logo" aria-label="Whitezebra Consulting Home">
-        <svg class="logo-mark" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="2" y="2" width="4" height="20" fill="currentColor"/>
-          <rect x="10" y="2" width="4" height="20" fill="currentColor"/>
-          <rect x="18" y="2" width="4" height="20" fill="currentColor"/>
-        </svg>
+        <img src="./assets/whitezebra.jpeg" alt="Whitezebra Logo" class="logo-img">
         <span>whitezebra.</span>
       </a>
 
@@ -422,11 +421,7 @@ function generateBlogHTML(post, allPosts) {
     <div class="container footer-grid">
       <div class="footer-column footer-brand">
         <a href="../index.html" class="logo" aria-label="Whitezebra Consulting Home">
-          <svg class="logo-mark" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="2" y="2" width="4" height="20" fill="currentColor"/>
-            <rect x="10" y="2" width="4" height="20" fill="currentColor"/>
-            <rect x="18" y="2" width="4" height="20" fill="currentColor"/>
-          </svg>
+          <img src="./assets/whitezebra.jpeg" alt="Whitezebra Logo" class="logo-img">
           <span>whitezebra.</span>
         </a>
         <p>Premium offshore operations partner delivering backend support, web management, and digital marketing support for global businesses.</p>
