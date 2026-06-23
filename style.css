@@ -16,6 +16,9 @@
   --color-accent-tan: #C2A988;   /* Muted warm-tan */
   --color-border: #E5E0D8;       /* Hairline border */
   
+  /* Brand Specific Colors */
+  --color-brand-green: #429370;  /* Brand logo green */
+  
   /* Contrast colors (Dark Panel) */
   --color-bg-dark: #111111;      /* Near-black for panels */
   --color-text-light: #FAF7F2;   /* Cream text */
@@ -158,10 +161,18 @@ header.scrolled .nav-container {
   letter-spacing: -0.01em;
 }
 
-.logo-mark {
-  color: var(--color-text-dark);
-  display: flex;
-  align-items: center;
+.logo-img {
+  height: 38px;
+  width: 38px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+  transition: var(--transition-smooth);
+}
+
+header.scrolled .logo-img {
+  height: 30px;
+  width: 30px;
 }
 
 /* Menu Toggle */
@@ -209,7 +220,7 @@ header.scrolled .nav-container {
   left: 0;
   width: 0;
   height: 1px;
-  background-color: var(--color-text-dark);
+  background-color: var(--color-brand-green);
   transition: var(--transition-smooth);
 }
 
@@ -235,8 +246,8 @@ header.scrolled .nav-container {
 }
 
 .nav-cta:hover {
-  background-color: var(--color-accent-tan);
-  color: var(--color-text-dark) !important;
+  background-color: var(--color-brand-green);
+  color: var(--color-text-light) !important;
 }
 
 /* Buttons */
@@ -268,9 +279,9 @@ header.scrolled .nav-container {
 }
 
 .btn-primary:hover {
-  background-color: var(--color-accent-tan);
-  border-color: var(--color-accent-tan);
-  color: var(--color-text-dark);
+  background-color: var(--color-brand-green);
+  border-color: var(--color-brand-green);
+  color: var(--color-text-light);
 }
 
 .btn-secondary {
@@ -384,7 +395,7 @@ header.scrolled .nav-container {
 }
 
 .comparison-panel.light .comparison-item svg {
-  stroke: #2ec4b6; /* Soft check teal */
+  stroke: var(--color-brand-green); /* Brand green */
 }
 
 .comparison-item h4 {
@@ -560,8 +571,8 @@ header.scrolled .nav-container {
 }
 
 .timeline-step:hover .timeline-marker {
-  background-color: var(--color-accent-tan);
-  border-color: var(--color-accent-tan);
+  background-color: var(--color-brand-green);
+  border-color: var(--color-brand-green);
   transform: translateX(-50%) scale(1.3);
 }
 
@@ -643,12 +654,31 @@ header.scrolled .nav-container {
   fill: currentColor;
 }
 
-/* For multi-testimonials (slider or stack) */
-.testimonial-divider {
-  width: 60px;
-  height: 1px;
-  background-color: var(--color-border-dark);
-  margin: 4rem auto;
+/* For multi-testimonials (slider) */
+.testimonial-slider {
+  position: relative;
+  min-height: 250px;
+  margin-bottom: 2rem;
+}
+
+.testimonial-slide {
+  display: none;
+}
+
+.testimonial-slide.active {
+  display: block;
+  animation: fadeInTestimonial 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInTestimonial {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Footer */

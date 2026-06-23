@@ -21,6 +21,31 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../style.css">
 
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://whitezebraconsulting.com/src/about.html">
+
+  <!-- Structured Data (JSON-LD) for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Whitezebra Consulting",
+      "url": "https://whitezebraconsulting.com/",
+      "logo": "https://whitezebraconsulting.com/src/assets/whitezebra.jpeg",
+      "description": "Whitezebra Consulting acts as a premium offshore operations partner, supporting global businesses with dedicated administrative, accounting, marketing, and website management teams.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Phulbari Nagar Marg",
+        "addressLocality": "Kathmandu",
+        "postalCode": "44600",
+        "addressCountry": "NP"
+      }
+    }
+  }
+  </script>
+
   <!-- Preconnect and Google Analytics -->
   <link rel="preconnect" href="https://www.googletagmanager.com">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -49,11 +74,7 @@
   <header id="mainHeader">
     <div class="container nav-container">
       <a href="../index.html" class="logo" aria-label="Whitezebra Consulting Home">
-        <svg class="logo-mark" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="2" y="2" width="4" height="20" fill="currentColor"/>
-          <rect x="10" y="2" width="4" height="20" fill="currentColor"/>
-          <rect x="18" y="2" width="4" height="20" fill="currentColor"/>
-        </svg>
+        <img src="assets/whitezebra.jpeg" alt="Whitezebra Logo" class="logo-img">
         <span>whitezebra.</span>
       </a>
 
@@ -188,6 +209,28 @@
             <h3 style="font-size: 1.25rem;">Innovation</h3>
             <p style="font-size: 0.9rem; margin-bottom: 0;">Continuous improvement in processes, embracing new technologies to deliver better results.</p>
           </div>
+
+          <!-- Security & Compliance -->
+          <div class="service-card" style="min-height: 220px;">
+            <div class="service-icon" aria-hidden="true" style="margin-bottom: 1.5rem;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3 style="font-size: 1.25rem;">Security & Compliance</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 0;">Strict data protection protocols, secure infrastructure, and compliance to protect your daily operations.</p>
+          </div>
+
+          <!-- Efficiency & Speed -->
+          <div class="service-card" style="min-height: 220px;">
+            <div class="service-icon" aria-hidden="true" style="margin-bottom: 1.5rem;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
+            <h3 style="font-size: 1.25rem;">Efficiency & Speed</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 0;">Streamlined processes, structured daily handovers, and quick execution to maintain operational momentum.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -247,16 +290,12 @@
     <div class="container footer-grid">
       <div class="footer-column footer-brand">
         <a href="../index.html" class="logo" aria-label="Whitezebra Consulting Home">
-          <svg class="logo-mark" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="2" y="2" width="4" height="20" fill="currentColor"/>
-            <rect x="10" y="2" width="4" height="20" fill="currentColor"/>
-            <rect x="18" y="2" width="4" height="20" fill="currentColor"/>
-          </svg>
-          <span>whitezebra.</span>
+          <img src="assets/whitezebra.jpeg" alt="Whitezebra Logo" class="logo-img">
+          <span>Whitezebra Consulting</span>
         </a>
         <p>Premium offshore operations partner delivering backend support, web management, and digital marketing support for global businesses.</p>
         <div class="footer-socials">
-          <a href="https://www.linkedin.com/company/whitezebrating/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/company/whitezebraconsulting/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
           </a>
         </div>

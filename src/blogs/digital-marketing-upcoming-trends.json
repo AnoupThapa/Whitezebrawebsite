@@ -9,7 +9,18 @@
   "readTime": "12 min read",
   "image": "digital-marketing.webp",
   "featured": true,
-  "tags": ["digital-marketing", "marketing-trends", "2026", "AI-marketing", "personalization", "voice-search", "AR-VR", "video-marketing", "sustainability", "omnichannel"],
+  "tags": [
+    "digital-marketing",
+    "marketing-trends",
+    "2026",
+    "AI-marketing",
+    "personalization",
+    "voice-search",
+    "AR-VR",
+    "video-marketing",
+    "sustainability",
+    "omnichannel"
+  ],
   "content": {
     "introduction": "Digital marketing is evolving faster than ever, and 2026 promises to be a transformative year for businesses around the world. Companies in the USA, Europe, and Australia are looking for ways to stay ahead of the curve, improve customer engagement, and drive higher ROI from their campaigns. With AI-powered tools, hyper-personalization, voice search optimization, immersive experiences, and sustainable marketing practices gaining momentum, businesses that adapt early will outperform competitors. In this guide, we'll explore the most important digital marketing trends for 2026, explain why they matter, and offer practical strategies to integrate them into your campaigns. Whether you're running an eCommerce store, agency, B2B business, or startup, these insights will help you make informed decisions and stay competitive.",
     "sections": [
@@ -59,6 +70,18 @@
   "seo": {
     "metaTitle": "Digital Marketing Trends 2026: AI, Personalization & Immersive Experiences",
     "metaDescription": "Explore the top digital marketing trends for 2026 including AI integration, hyper-personalization, voice search, AR/VR, video marketing, and sustainable practices. Strategic insights for USA, Europe, and Australian businesses.",
-    "keywords": ["digital marketing trends 2026", "AI marketing", "personalization strategy", "voice search optimization", "AR VR marketing", "video marketing", "sustainable marketing", "omnichannel strategy", "predictive analytics", "micro-influencers", "USA Europe Australia"]
+    "keywords": [
+      "digital marketing trends 2026",
+      "AI marketing",
+      "personalization strategy",
+      "voice search optimization",
+      "AR VR marketing",
+      "video marketing",
+      "sustainable marketing",
+      "omnichannel strategy",
+      "predictive analytics",
+      "micro-influencers",
+      "USA Europe Australia"
+    ]
   }
 }

@@ -86,4 +86,15 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleMenu(false);
     }
   });
+
+  // --- 3. Auto-rotating Testimonial Slider ---
+  const slides = document.querySelectorAll('.testimonial-slide');
+  if (slides.length > 1) {
+    let currentSlide = 0;
+    setInterval(() => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }, 6000);
+  }
 });

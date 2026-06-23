@@ -142,6 +142,38 @@ function generateBlogHTML(post, allPosts) {
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../style.css">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="${pageUrl}">
+
+  <!-- Structured Data (JSON-LD) for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "${post.title.replace(/"/g, '\\"')}",
+    "description": "${metaDescription.replace(/"/g, '\\"')}",
+    "image": "${imageUrl}",
+    "datePublished": "${post.date}",
+    "author": {
+      "@type": "Organization",
+      "name": "Whitezebra Consulting",
+      "url": "https://whitezebraconsulting.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Whitezebra Consulting",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://whitezebraconsulting.com/src/assets/whitezebra.jpeg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "${pageUrl}"
+    }
+  }
+  </script>
   
   <style>
     body {
@@ -521,6 +553,14 @@ function generateSitemap(allPosts) {
         <lastmod>2024-01-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
+    </url>
+
+    <!-- Our Team Page -->
+    <url>
+        <loc>${BASE_URL}/src/ourteam.html</loc>
+        <lastmod>2026-06-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
     </url>
 
     <!-- Blog Posts -->`;
