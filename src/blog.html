@@ -1,447 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/jpeg" href="./assets/whitezebra.jpeg">
-    <meta name="keywords" content="business blog, offshore operations insights, digital transformation, business growth strategies, consulting blog">
-    <meta name="author" content="Whitezebra Consulting">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://whitezebraconsulting.com/blog">
-    <meta property="og:title" content="Blog - Whitezebra Consulting">
-    <meta property="og:description" content="Expert insights on offshore operations, digital transformation, and business growth strategies. Stay updated with the latest trends and best practices.">
-    <meta property="og:image" content="https://whitezebraconsulting.com/src/assets/whitezebra.jpeg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://whitezebraconsulting.com/blog">
-    <meta property="twitter:title" content="Blog - Whitezebra Consulting">
-    <meta property="twitter:description" content="Expert insights on offshore operations, digital transformation, and business growth strategies.">
-    <meta property="twitter:image" content="https://whitezebraconsulting.com/src/assets/whitezebra.jpeg">
-    <meta name="description" content="Whitezebra Consulting Blog - Insights on offshore operations, digital marketing, and business growth strategies.">
-    <title>Blog - Whitezebra Consulting</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="./css/footer.css">
-    <style>
-        :root {
-            --primary: #1a365d;
-            --primary-dark: #2d6bc9;
-            --secondary: #2d6bc9;
-            --accent: #38b2ac;
-            --light: #f8fafc;
-            --gray-light: #e5e7eb;
-            --gray: #64748b;
-            --dark: #1e293b;
-            --radius: 12px;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-            --shadow-lg: 0 10px 40px rgba(0,0,0,0.1);
-            --transition: all 0.3s ease;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
-        }
-        
-        /* Clean Header Styles */
-        .blog-header {
-            background: linear-gradient(135deg, #1a2a4a 0%, #2d4379 100%);
-            padding: 120px 0 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .blog-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(52, 152, 219, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(231, 76, 60, 0.1) 0%, transparent 50%);
-        }
-        
-        .blog-header-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .blog-header h1 {
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.5px;
-        }
-        
-        .blog-header p {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.95);
-            max-width: 650px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-        
-        /* Blog Section */
-        .blog-section {
-            padding: 5rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .blog-filters {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-        
-        .filter-btn {
-            padding: 0.75rem 1.5rem;
-            background: white;
-            border: 1px solid var(--gray-light);
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--gray);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-        
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 4rem;
-        }
-        
-        .blog-card {
-            background: white;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .blog-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .blog-image {
-            height: 220px;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .blog-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 100%);
-        }
-        
-        .blog-content {
-            padding: 2rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .blog-category {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            background: var(--light);
-            color: var(--primary);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .blog-content h3 {
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.4;
-        }
-        
-        .blog-content h3 a {
-            color: var(--dark);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .blog-content h3 a:hover {
-            color: var(--primary);
-        }
-        
-        .blog-excerpt {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-        
-        .blog-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--gray-light);
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-        
-        .read-time {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .read-more {
-            color: var(--primary);
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition);
-        }
-        
-        .read-more:hover {
-            gap: 1rem;
-        }
-        
-        /* Pagination */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 4rem;
-        }
-        
-        .pagination-btn {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: var(--radius);
-            background: white;
-            border: 1px solid var(--gray-light);
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        
-        .pagination-btn:hover,
-        .pagination-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .blog-header {
-                padding: 6rem 0 3rem;
-            }
-            
-            .blog-header h1 {
-                font-size: 2.5rem;
-            }
-            
-            .blog-stats {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-            
-            .blog-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .newsletter-form {
-                flex-direction: column;
-            }
-            
-            .blog-filters {
-                gap: 0.5rem;
-            }
-            
-            .filter-btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.9rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .blog-section {
-                padding: 3rem 1rem;
-            }
-            
-            .blog-header-content {
-                padding: 0 1rem;
-            }
-            
-            .blog-header h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journal — Whitezebra Consulting</title>
+  <meta name="description" content="Expert insights on offshore operations, digital transformation, and business growth strategies from the Whitezebra team.">
+  <meta name="keywords" content="business blog, offshore operations insights, digital transformation, business growth strategies, consulting blog">
+  <meta name="author" content="Whitezebra Consulting">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://whitezebraconsulting.com/blog">
+  <meta property="og:title" content="Journal — Whitezebra Consulting">
+  <meta property="og:description" content="Expert insights on offshore operations, digital transformation, and business growth strategies.">
+  <meta property="og:image" content="assets/whitezebra.jpeg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/whitezebra.jpeg">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../style.css">
+
+  <!-- Preconnect and Google Analytics -->
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <script>
+    function loadGA() {
+      if (window.gaLoaded) return;
+      window.gaLoaded = true;
+      var script = document.createElement('script');
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-YHBBRVH6XS';
+      script.defer = true;
+      document.head.appendChild(script);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YHBBRVH6XS');
+    }
+    ['mousemove','scroll','keydown','click','touchstart'].forEach(e => 
+      window.addEventListener(e, loadGA, {once:true, passive:true})
+    );
+    setTimeout(loadGA, 3000);
+  </script>
 </head>
 <body>
-    <!-- Navigation -->
-   <nav id="mainNav">
-        <div class="nav-container">
-            <div class="logo">
-                <img src="./assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img">
-                <a href="../index.html" class="logo-text">Whitezebra Consulting</a>
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="blog.html" class="active">Blogs</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <div class="mobile-menu" id="mobileMenu" onclick="toggleMenu()">
-                <span class="bar bar1"></span>
-                <span class="bar bar2"></span>
-                <span class="bar bar3"></span>
-            </div>
+
+  <!-- Header -->
+  <header id="mainHeader">
+    <div class="container nav-container">
+      <a href="../index.html" class="logo" aria-label="Whitezebra Consulting Home">
+        <svg class="logo-mark" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="2" width="4" height="20" fill="currentColor"/>
+          <rect x="10" y="2" width="4" height="20" fill="currentColor"/>
+          <rect x="18" y="2" width="4" height="20" fill="currentColor"/>
+        </svg>
+        <span>whitezebra.</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12" class="hamburger-line-1"></line>
+          <line x1="3" y1="6" x2="21" y2="6" class="hamburger-line-2"></line>
+          <line x1="3" y1="18" x2="21" y2="18" class="hamburger-line-3"></line>
+        </svg>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="blog.html" class="active">Journal</a></li>
+        <li><a href="contact.html" class="nav-cta">Start a project</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    
+    <!-- Hero Header -->
+    <section class="hero animate-fade" style="min-height: 50vh; padding-top: 160px; padding-bottom: 3rem;">
+      <div class="container hero-content">
+        <span class="eyebrow">The Whitezebra Journal</span>
+        <h1>Insights on scaling and operational health.</h1>
+        <p class="hero-desc">Strategic advice, standard operating procedures (SOPs), and operational guides for global brands and scaling digital businesses.</p>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="section-padding" style="border-top: 1px solid var(--color-border);">
+      <div class="container">
+        
+        <!-- Category Filters -->
+        <div class="blog-filters">
+          <button class="filter-btn active">All Articles</button>
+          <button class="filter-btn">Operations</button>
+          <button class="filter-btn">E-commerce</button>
+          <button class="filter-btn">Marketing</button>
+          <button class="filter-btn">Strategy</button>
         </div>
-    </nav>
 
-    <!-- Clean Blog Header -->
-    <header class="blog-header">
-        <div class="blog-header-content">
-            <h1>Our Blog</h1>
-            <p>Expert insights on offshore operations, digital transformation, and business growth strategies.</p>
+        <!-- Blog Grid -->
+        <div class="blog-grid" id="blogGrid">
+          <div style="grid-column: 1 / -1; text-align: center; padding: 5rem 0;">
+            <!-- Modern CSS Spinner instead of FontAwesome -->
+            <div style="display: inline-block; width: 40px; height: 40px; border: 2px solid var(--color-border); border-top-color: var(--color-text-dark); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 1.5rem;"></div>
+            <style>
+              @keyframes spin { to { transform: rotate(360deg); } }
+            </style>
+            <p style="color: #666; font-size: 0.95rem;">Loading articles...</p>
+          </div>
         </div>
-    </header>
 
-    <!-- Blog Content -->
-    <main>
-        <section class="blog-section">
-            <!-- Category Filters -->
-            <div class="blog-filters">
-                <button class="filter-btn active">All Articles</button>
-                <button class="filter-btn">Operations</button>
-                <button class="filter-btn">E-commerce</button>
-                <button class="filter-btn">Marketing</button>
-                <button class="filter-btn">Strategy</button>
-                <button class="filter-btn">Case Studies</button>
-            </div>
-
-            <!-- Blog Grid -->
-            <div class="blog-grid">
-                <!-- Blog posts will be dynamically loaded here -->
-                <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
-                    <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: var(--primary);"></i>
-                    <p style="margin-top: 1rem; color: var(--gray);">Loading blog posts...</p>
-                </div>
-            </div>
-
-            <!-- Pagination -->
-            <div class="pagination">
-                <!-- Pagination will be dynamically generated here -->
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column footer-logo">
-                    <div class="logo" style="color: white; margin-bottom: 1.5rem;">
-                        <img src="./assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img" style="height: 50px;">
-                        <span>Whitezebra Consulting</span>
-                    </div>
-                    <p>Your trusted offshore operations partner delivering premium backend support services for digital businesses worldwide.</p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/company/whitezebraconsulting/"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column footer-links">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="services.html#digital-marketing">Digital Marketing</a></li>
-                        <li><a href="services.html#ecommerce">E-Commerce Management</a></li>
-                        <li><a href="services.html#graphic-design">Graphic Design</a></li>
-                        <li><a href="services.html#admin">Admin Support</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column footer-contact">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Phulbari Nagar Marg, Kathmandu 44600, Nepal</p>
-                    <p><i class="fas fa-phone"></i> +977-9851324698</p>
-                    <p><i class="fas fa-envelope"></i> info.whitezebraconsulting@gmail.com</p>
-                    <p><i class="fas fa-clock"></i> Mon-Fri: 5:30 AM - 2:00 PM (NST)</p>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 Whitezebra Consulting Pvt. Ltd. All rights reserved.</p>
-                <p style="margin-top: 0.5rem; font-size: 0.8rem;">Designed with excellence for business growth</p>
-            </div>
+        <!-- Pagination -->
+        <div class="pagination" id="pagination" style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 4rem;">
+          <!-- Managed by blog-engine.js -->
         </div>
-    </footer>
 
-    <script src="../script.js"></script>
-    <script src="./js/blog-engine.js"></script>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-column footer-brand">
+        <a href="../index.html" class="logo" aria-label="Whitezebra Consulting Home">
+          <svg class="logo-mark" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="2" width="4" height="20" fill="currentColor"/>
+            <rect x="10" y="2" width="4" height="20" fill="currentColor"/>
+            <rect x="18" y="2" width="4" height="20" fill="currentColor"/>
+          </svg>
+          <span>whitezebra.</span>
+        </a>
+        <p>Premium offshore operations partner delivering backend support, web management, and digital marketing support for global businesses.</p>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/company/whitezebrating/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Company</h3>
+        <ul class="footer-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Journal</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Services</h3>
+        <ul class="footer-links">
+          <li><a href="services.html#digital-marketing">Digital Marketing</a></li>
+          <li><a href="services.html#ecommerce">E-Commerce</a></li>
+          <li><a href="services.html#graphic-design">Graphic Design</a></li>
+          <li><a href="services.html#web-management">Web Management</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact</h3>
+        <div class="footer-contact-details">
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Phulbari Nagar Marg, Kathmandu 44600, Nepal</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>+977-9851324698</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>info.whitezebraconsulting@gmail.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>Mon–Fri 5:30 AM–2:00 PM NST</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Whitezebra Consulting Pvt. Ltd. All rights reserved.</p>
+      <p>Nepal Offshore Operations Layer</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../script.js"></script>
+  <script src="./js/blog-engine.js"></script>
 </body>
 </html>

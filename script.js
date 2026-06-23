@@ -1,128 +1,89 @@
-// Mobile menu toggle with hamburger/cross animation
-let isMenuOpen = false;
-const mobileMenu = document.getElementById('mobileMenu');
-const navLinks = document.getElementById('navLinks');
+/**
+ * Whitezebra Consulting - Core Navigation & Interaction Script
+ */
 
-function toggleMenu() {
-    isMenuOpen = !isMenuOpen;
-    
-    // Toggle menu visibility
-    navLinks.classList.toggle('active');
-    
-    // Toggle hamburger/cross animation
-    mobileMenu.classList.toggle('open');
-    
-    // Prevent body scroll when menu is open
-    document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
-}
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.getElementById('mainHeader');
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  
+  if (!header || !menuToggle || !navLinks) return;
 
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-            navLinks.classList.remove('active');
-            mobileMenu.classList.remove('open');
-            document.body.style.overflow = 'auto';
-            isMenuOpen = false;
-        }
-    });
-});
+  let isMenuOpen = false;
 
-// Close menu when clicking outside
-document.addEventListener('click', (event) => {
-    const isClickInsideNav = navLinks.contains(event.target) || mobileMenu.contains(event.target);
-    
-    if (!isClickInsideNav && isMenuOpen) {
-        navLinks.classList.remove('active');
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = 'auto';
-        isMenuOpen = false;
-    }
-});
-
-// Navbar hide/show on scroll
-let lastScrollTop = 0;
-const navbar = document.getElementById('mainNav');
-const scrollThreshold = 100; // Minimum scroll distance before hiding
-let isNavbarVisible = true;
-
-window.addEventListener('scroll', function() {
+  // --- 1. Header Scroll State ---
+  const handleScroll = () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // Determine scroll direction
-    if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
-        // Scrolling DOWN - hide navbar
-        if (isNavbarVisible) {
-            navbar.classList.add('hide-nav');
-            isNavbarVisible = false;
-        }
+    if (scrollTop > 20) {
+      header.classList.add('scrolled');
     } else {
-        // Scrolling UP - show navbar
-        if (!isNavbarVisible) {
-            navbar.classList.remove('hide-nav');
-            isNavbarVisible = true;
-        }
+      header.classList.remove('scrolled');
     }
+  };
+
+  // Run on load and add listener
+  handleScroll();
+  window.addEventListener('scroll', handleScroll, { passive: true });
+
+  // --- 2. Accessible Mobile Hamburger Toggle ---
+  const toggleMenu = (open) => {
+    isMenuOpen = typeof open === 'boolean' ? open : !isMenuOpen;
     
-    lastScrollTop = scrollTop;
+    // Toggle active state on menu list
+    navLinks.classList.toggle('open', isMenuOpen);
     
-    // Navbar background on scroll
-    if (scrollTop > 50) {
-        navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
-    }
-});
-
-// Show navbar when mouse is near top of screen
-document.addEventListener('mousemove', function(e) {
-    if (e.clientY < 100 && !isNavbarVisible) {
-        navbar.classList.remove('hide-nav');
-        isNavbarVisible = true;
-    }
-});
-
-// Scroll to next section when clicking scroll indicator
-function scrollToNextSection() {
-    const nextSection = document.querySelector('#about');
-    nextSection.scrollIntoView({ behavior: 'smooth' });
-}
-
-// Keep navbar visible when hovering over it
-navbar.addEventListener('mouseenter', function() {
-    if (!isNavbarVisible) {
-        navbar.classList.remove('hide-nav');
-        isNavbarVisible = true;
-    }
-});
-
-// Handle mobile viewport height for hero section
-function setHeroHeight() {
-    const hero = document.querySelector('.hero');
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    // Update ARIA attribute
+    menuToggle.setAttribute('aria-expanded', isMenuOpen.toString());
     
-    // Set hero section height to full viewport if it exists
-    if (hero) {
-        hero.style.height = `${window.innerHeight}px`;
+    // Update SVG states or styling if any
+    menuToggle.classList.toggle('open', isMenuOpen);
+    
+    // Prevent background scroll when mobile menu is active
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+
+    // If menu is opened, set focus to first item for keyboard accessibility
+    if (isMenuOpen) {
+      const firstLink = navLinks.querySelector('a');
+      if (firstLink) {
+        setTimeout(() => firstLink.focus(), 100);
+      }
     }
-}
+  };
 
-// Set initial hero height
-setHeroHeight();
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  });
 
-// Update hero height on resize and orientation change
-window.addEventListener('resize', setHeroHeight);
-window.addEventListener('orientationchange', setHeroHeight);
-
-// Close menu on window resize if it becomes desktop view
-window.addEventListener('resize', function() {
-    if (window.innerWidth > 768 && isMenuOpen) {
-        navLinks.classList.remove('active');
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = 'auto';
-        isMenuOpen = false;
+  // Close mobile menu when clicking outside of nav area
+  document.addEventListener('click', (e) => {
+    if (isMenuOpen && !header.contains(e.target)) {
+      toggleMenu(false);
     }
+  });
+
+  // Close mobile menu when ESC is pressed
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isMenuOpen) {
+      toggleMenu(false);
+      menuToggle.focus();
+    }
+  });
+
+  // Close mobile menu when nav links are clicked (useful for in-page anchors)
+  const links = navLinks.querySelectorAll('a');
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      if (isMenuOpen) {
+        toggleMenu(false);
+      }
+    });
+  });
+
+  // Clean reset of mobile navigation states when window is resized above 992px
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 992 && isMenuOpen) {
+      toggleMenu(false);
+    }
+  });
 });

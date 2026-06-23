@@ -1,344 +1,483 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Performance Optimizations: Reduce DNS lookup time -->
-    <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://www.google-analytics.com">
-    
-    <!-- Google Analytics: Delayed loading to reduce TBT -->
-    <script>
-        function loadGA() {
-            if (window.gaLoaded) return;
-            window.gaLoaded = true;
-            var script = document.createElement('script');
-            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-YHBBRVH6XS';
-            script.defer = true;
-            document.head.appendChild(script);
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-YHBBRVH6XS');
-        }
-        ['mousemove','scroll','keydown','click','touchstart'].forEach(e => 
-            window.addEventListener(e, loadGA, {once:true, passive:true})
-        );
-        setTimeout(loadGA, 3000);
-    </script>
-    <link rel="icon" type="image/jpeg" href="src/assets/whitezebra.jpeg">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Whitezebra Consulting provides premium offshore backend support, digital marketing, and e-commerce solutions for businesses worldwide.">
-    <meta name="keywords" content="offshore operations, backend support, digital marketing, e-commerce management, admin support, business consulting, Whitezebra Consulting">
-    <meta name="author" content="Whitezebra Consulting">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://whitezebraconsulting.com/">
-    <meta property="og:title" content="Whitezebra Consulting - Offshore Operations & Backend Support">
-    <meta property="og:description" content="Premium offshore backend support services for digital businesses. Expert solutions in digital marketing, e-commerce management, and admin support.">
-    <meta property="og:image" content="https://whitezebraconsulting.com/src/assets/whitezebra.jpeg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://whitezebraconsulting.com/">
-    <meta property="twitter:title" content="Whitezebra Consulting - Offshore Operations & Backend Support">
-    <meta property="twitter:description" content="Premium offshore backend support services for digital businesses. Expert solutions in digital marketing, e-commerce management, and admin support.">
-    <meta property="twitter:image" content="https://whitezebraconsulting.com/src/assets/whitezebra.jpeg">
-    <title>Whitezebra Consulting Pvt. Ltd - Offshore Operations Partner</title>
-    
-    <!-- Critical CSS: Inline for instant rendering -->
-    <style>
-    :root{--primary:#1a365d;--secondary:#2d6bc9;--accent:#38b2ac;--dark:#1e293b;--gray:#64748b}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.6;color:var(--dark);background:#fff;overflow-x:hidden;display:flex;flex-direction:column}main{flex:1 0 auto}nav{position:fixed;top:0;left:0;width:100%;background:rgba(255,255,255,.98);box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:1000}.nav-container{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;max-width:1200px;margin:0 auto}.logo{display:flex;align-items:center;font-weight:700;color:var(--primary)}.logo-img{height:45px;width:45px;margin-right:12px;object-fit:contain}.logo-text{font-size:1.5rem;font-weight:700;color:var(--primary)}.nav-links{display:flex;gap:2rem}.nav-links a{font-weight:500;text-decoration:none;color:inherit}.hero{background:linear-gradient(135deg,var(--primary) 0%,#2c5282 100%);color:#fff;height:100vh;min-height:700px;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:80px}.hero-content{max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:2;width:100%;padding:0 1.5rem}h1{font-size:3rem;margin-bottom:1.5rem;color:#fff;line-height:1.1;font-weight:700}.hero p{font-size:1.3rem;max-width:700px;margin:0 auto 2.5rem;color:rgba(255,255,255,.9)}.hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}.cta-button{display:inline-block;background:linear-gradient(to right,var(--accent),#319795);color:#fff;padding:1rem 2.5rem;border-radius:50px;font-weight:600;font-size:1.1rem;text-decoration:none;box-shadow:0 6px 15px rgba(56,178,172,.3)}.secondary-button{background:transparent;border:2px solid #fff;color:#fff}.mobile-menu{display:none}@media (max-width:768px){.nav-links{display:none}.mobile-menu{display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;width:30px;height:24px;position:relative;z-index:1001}.bar{position:absolute;width:100%;height:3px;background:var(--primary);border-radius:2px}.bar1{top:0}.bar2{top:50%;transform:translateY(-50%)}.bar3{bottom:0}h1{font-size:2.5rem}.hero p{font-size:1.1rem}}
-    </style>
-    
-    <!-- Preload main CSS for faster loading -->
-    <link rel="preload" href="style.css" as="style">
-    
-    <!-- Async Font Awesome: Prevents render blocking -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    
-    <!-- Main CSS loads after critical CSS -->
-    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="style.css"></noscript>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whitezebra Consulting — Offshore Operations & Backend Support</title>
+  <meta name="description" content="Whitezebra is a premium offshore operations partner specializing in comprehensive backend support, digital marketing, e-commerce, and admin support.">
+  <meta name="keywords" content="offshore operations, backend support, digital marketing, e-commerce management, admin support, business consulting, Whitezebra Consulting">
+  <meta name="author" content="Whitezebra Consulting">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://whitezebraconsulting.com/">
+  <meta property="og:title" content="Whitezebra Consulting — Offshore Operations & Backend Support">
+  <meta property="og:description" content="Premium offshore backend support services for digital businesses. We handle the operations layer so you can focus on scaling.">
+  <meta property="og:image" content="src/assets/whitezebra.jpeg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://whitezebraconsulting.com/">
+  <meta property="twitter:title" content="Whitezebra Consulting — Offshore Operations & Backend Support">
+  <meta property="twitter:description" content="Premium offshore backend support services for digital businesses. We handle the operations layer so you can focus on scaling.">
+  <meta property="twitter:image" content="src/assets/whitezebra.jpeg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="src/assets/whitezebra.jpeg">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Preconnect and Google Analytics -->
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <script>
+    function loadGA() {
+      if (window.gaLoaded) return;
+      window.gaLoaded = true;
+      var script = document.createElement('script');
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-YHBBRVH6XS';
+      script.defer = true;
+      document.head.appendChild(script);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YHBBRVH6XS');
+    }
+    ['mousemove','scroll','keydown','click','touchstart'].forEach(e => 
+      window.addEventListener(e, loadGA, {once:true, passive:true})
+    );
+    setTimeout(loadGA, 3000);
+  </script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="mainNav">
-        <div class="nav-container">
-            <div class="logo">
-                <img src="./src/assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img" width="45" height="45" loading="eager">
-                <a href="index.html" class="logo-text">Whitezebra Consulting</a>
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="src/about.html">About</a></li>
-                <li><a href="src/services.html">Services</a></li>
-                <li><a href="src/blog.html">Blogs</a></li>
-                <li><a href="src/contact.html">Contact</a></li>
-            </ul>
-            <div class="mobile-menu" id="mobileMenu" onclick="toggleMenu()">
-                <span class="bar bar1"></span>
-                <span class="bar bar2"></span>
-                <span class="bar bar3"></span>
-            </div>
-        </div>
-    </nav>
 
-    <main>
-        <!-- Hero Section - Full Screen -->
-        <section class="hero">
-            <div class="container hero-content">
-                <h1>Your Trusted Offshore Backend Operations Partner</h1>
-                <p>Streamline your business operations with our expert team. We handle the backend so you can focus on growth, innovation, and scaling your business to new heights.</p>
-                <div class="hero-buttons">
-                    <a href="src/contact.html" class="cta-button">Start Outsourcing Today</a>
-                    <a href="#services" class="cta-button secondary-button">Explore Our Services</a>
-                </div>
-            </div>
-            
-            <!-- Scroll Indicator - Now positioned at bottom of hero section -->
-            <div class="scroll-indicator" onclick="scrollToNextSection()">
-                <i class="fas fa-chevron-down"></i>
-            </div>
-        </section>
+  <!-- Header -->
+  <header id="mainHeader">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" aria-label="Whitezebra Consulting Home">
+        <svg class="logo-mark" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="2" width="4" height="20" fill="currentColor"/>
+          <rect x="10" y="2" width="4" height="20" fill="currentColor"/>
+          <rect x="18" y="2" width="4" height="20" fill="currentColor"/>
+        </svg>
+        <span>whitezebra.</span>
+      </a>
 
-    <!-- About Section -->
-    <section class="about-section">
-        <div class="container">
-            <h2 class="section-title">About Whitezebra Consulting</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Streamlining Operations, Amplifying Growth</h3>
-                    <p>Whitezebra Consulting Pvt. Ltd. is a premier offshore operations partner specializing in comprehensive backend support services. We handle the operational complexities so you can focus on your core business.</p>
-                    <p>Currently powering operations for multiple clients globally, we bring expertise in digital marketing, e-commerce management, graphic design, and administrative support.</p>
-                </div>
-                <div class="stats-container">
-                    <div class="stats">
-                        <div class="stat-item">
-                            <div class="stat-number">10+</div>
-                            <p>Major Clients</p>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">100%</div>
-                            <p>Client Satisfaction</p>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">24/7</div>
-                            <p>Support</p>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">50%+</div>
-                            <p>Cost Savings</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12" class="hamburger-line-1"></line>
+          <line x1="3" y1="6" x2="21" y2="6" class="hamburger-line-2"></line>
+          <line x1="3" y1="18" x2="21" y2="18" class="hamburger-line-3"></line>
+        </svg>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="src/about.html">About</a></li>
+        <li><a href="src/services.html">Services</a></li>
+        <li><a href="src/blog.html">Journal</a></li>
+        <li><a href="src/contact.html" class="nav-cta">Start a project</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    
+    <!-- Hero Section -->
+    <section class="hero animate-fade">
+      <div class="container hero-content">
+        <span class="eyebrow">Offshore Operations Partner</span>
+        <h1>The quiet operations layer behind scaling brands.</h1>
+        <p class="hero-desc">We handle the essential backend workflows, technical support, and marketing logistics so your core team can focus on growth, innovation, and client relationships.</p>
+        <div class="btn-group">
+          <a href="src/contact.html" class="btn btn-primary">Start outsourcing</a>
+          <a href="src/services.html" class="btn btn-secondary">Explore services</a>
         </div>
+      </div>
     </section>
 
-        <!-- Services Section -->
-        <section class="services-section" id="services">
-            <div class="container">
-                <h2 class="section-title">Our Services</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <h3>Digital Marketing</h3>
-                        <p>Comprehensive strategies that drive growth and engagement across all digital channels.</p>
-                        <ul>
-                            <li>Social Media Management</li>
-                            <li>SEO & Content Marketing</li>
-                            <li>Email Campaigns</li>
-                            <li>PPC Advertising</li>
-                        </ul>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <h3>E-Commerce Management</h3>
-                        <p>End-to-end solutions for seamless online retail operations and store optimization.</p>
-                        <ul>
-                            <li>Shopify Store Management</li>
-                            <li>WordPress Admin</li>
-                            <li>Product Listing</li>
-                            <li>Order Processing</li>
-                        </ul>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <h3>Graphic Design</h3>
-                        <p>Creative visual solutions that elevate your brand and communicate your message effectively.</p>
-                        <ul>
-                            <li>Brand Identity</li>
-                            <li>Marketing Collaterals</li>
-                            <li>Social Media Graphics</li>
-                            <li>Website Elements</li>
-                        </ul>
-                    </div>
-                </div>
-                <div style="text-align: center; margin-top: 3rem;">
-                    <a href="src/services.html" class="cta-button secondary-button" style="color: var(--primary); border-color: var(--primary);">View All Services</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Choose Us -->
-        <section class="why-us">
-            <div class="container">
-                <h2 class="section-title">Why Choose Whitezebra?</h2>
-                <div class="benefits-grid">
-                    <div class="benefit-item">
-                        <div class="benefit-icon">
-                            <i class="fas fa-money-bill-wave"></i>
-                        </div>
-                        <h3>Cost Efficiency</h3>
-                        <p>Save up to 50% on operational costs without compromising on quality.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3>Data Security</h3>
-                        <p>Enterprise-grade security protocols and confidentiality agreements.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <h3>Quick Onboarding</h3>
-                        <p>Start in days, not weeks with our streamlined integration process.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon">
-                            <i class="fas fa-bullseye"></i>
-                        </div>
-                        <h3>Expert Team</h3>
-                        <p>Skilled professionals with proven experience in diverse industries.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonial Section - Google Reviews -->
-        <section class="testimonial-section">
-            <div class="container">
-                <h2 class="section-title">What Our Clients Say</h2>
-                <div class="google-reviews-header">
-                    <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" class="google-logo">
-                    <span class="reviews-badge">Reviews</span>
-                </div>
-                <div class="testimonials-grid">
-                    <div class="testimonial google-review">
-                        <div class="review-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p>"Whitezebra Consulting has been an outstanding partner for our business. They manage our entire backend operations, including admin and customer services, our Shopify store, website updates, social media pages, product research, and design. Their team works with great efficiency and professionalism, making the entire process smooth and stress-free for us. We truly appreciate their support and commitment and wish Whitezebra Consulting all the very best for their future endeavors."</p>
-                        <div class="client-info">
-                            <div class="client-avatar">
-                                DC
-                            </div>
-                            <div>
-                                <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem; color: var(--dark);">Dominic Carbone</p>
-                                <p style="margin: 0; display: flex; align-items: center; gap: 0.5rem;"><i class="fab fa-google" style="color: #4285F4;"></i> Google Review</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial google-review">
-                        <div class="review-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p>"White Zebra Consulting has been a go to company for all of our social media and SEO tasks."</p>
-                        <div class="client-info">
-                            <div class="client-avatar">
-                                D
-                            </div>
-                            <div>
-                                <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem; color: var(--dark);">Designs</p>
-                                <p style="margin: 0; display: flex; align-items: center; gap: 0.5rem;"><i class="fab fa-google" style="color: #4285F4;"></i> Google Review</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="container">
-                <h2>Ready to Optimize Your Operations?</h2>
-                <p>Let's discuss how Whitezebra Consulting can help streamline your backend processes and drive your business growth.</p>
-                <a href="src/contact.html" class="cta-button">Get Started Now</a>
-            </div>
-        </section>
-    </main>
-    
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column footer-logo">
-                    <div class="logo" style="color: white; margin-bottom: 1.5rem;">
-                        <img src="./src/assets/whitezebra.jpeg" alt="Whitezebra Consulting" class="logo-img" style="height: 50px;" width="50" height="50" loading="lazy">
-                        <span>Whitezebra Consulting</span>
-                    </div>
-                    <p>Your trusted offshore operations partner delivering premium backend support services for digital businesses worldwide.</p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/company/whitezebraconsulting/" aria-label="Visit our LinkedIn company page" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html" class="active">Home</a></li>
-                        <li><a href="src/about.html">About Us</a></li>
-                        <li><a href="src/services.html">Services</a></li>
-                        <li><a href="src/blog.html">Blogs</a></li>
-                        <li><a href="src/contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column footer-links">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="src/services.html#digital-marketing">Digital Marketing</a></li>
-                        <li><a href="src/services.html#ecommerce">E-Commerce Management</a></li>
-                        <li><a href="src/services.html#graphic-design">Graphic Design</a></li>
-                        <li><a href="src/services.html#admin">Admin Support</a></li>
-                    </ul>
-                </div>
-                
-                 <div class="footer-column footer-contact">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Phulbari Nagar Marg, Kathmandu 44600, Nepal</p>
-                    <p><i class="fas fa-phone"></i> +977-9851324698</p>
-                    <p><i class="fas fa-envelope"></i> info.whitezebraconsulting@gmail.com</p>
-                    <p><i class="fas fa-clock"></i> Mon-Fri: 5:30 AM - 2:00 PM (NST)</p>
-                </div> 
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 Whitezebra Consulting Pvt. Ltd. All rights reserved.</p>
-                <p style="margin-top: 0.5rem; font-size: 0.8rem;">Designed with excellence for business growth</p>
-            </div>
+    <!-- Before/After Comparison Panel -->
+    <section class="comparison-section">
+      <div class="comparison-wrapper">
+        <!-- Without Partner (Dark Panel) -->
+        <div class="comparison-panel dark">
+          <span class="eyebrow">Without an ops partner</span>
+          <h2>Fragmented growth</h2>
+          <ul class="comparison-list">
+            <li class="comparison-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+              <div>
+                <h4>Operational Chaos</h4>
+                <p>Core teams get bogged down in repetitive data entry, inventory issues, and admin task lists.</p>
+              </div>
+            </li>
+            <li class="comparison-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+              <div>
+                <h4>Prohibitive Overhead Costs</h4>
+                <p>Hiring fully in-house support in primary markets leads to high salaries, benefits, and office expenses.</p>
+              </div>
+            </li>
+            <li class="comparison-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+              <div>
+                <h4>Inconsistent Performance</h4>
+                <p>Backend details slip through the cracks, leading to delayed orders, slow load speeds, and bad customer service.</p>
+              </div>
+            </li>
+          </ul>
         </div>
-    </footer>
 
-    <!-- Defer JavaScript: Load after HTML parsing -->
-    <script src="script.js" defer></script>
+        <!-- With Whitezebra (Light Panel) -->
+        <div class="comparison-panel light">
+          <span class="eyebrow">With Whitezebra</span>
+          <h2>Seamless scaling</h2>
+          <ul class="comparison-list">
+            <li class="comparison-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <div>
+                <h4>Focus on Strategy</h4>
+                <p>Your core staff directs their energy entirely on strategy, sales, client relationships, and high-value work.</p>
+              </div>
+            </li>
+            <li class="comparison-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <div>
+                <h4>50%+ Cost Efficiencies</h4>
+                <p>Leverage pre-vetted, highly trained offshore professionals at a fraction of standard domestic costs.</p>
+              </div>
+            </li>
+            <li class="comparison-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <div>
+                <h4>Guaranteed 24/7 Support</h4>
+                <p>Run uninterrupted operations with structured handovers, proactive updates, and robust security protocols.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Row Section -->
+    <section class="stats-section section-padding">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">Clients Globalled</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Support coverage</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">50%+</span>
+            <span class="stat-label">Cost savings</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Client satisfaction</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section section-padding">
+      <div class="container">
+        <div class="section-title-wrapper">
+          <span class="eyebrow">Our capabilities</span>
+          <h2 class="section-title">Backend support engineered for scaling.</h2>
+          <p class="section-subtitle">We manage your daily digital workflows and specialized back-office operations under unified, pre-vetted service lines.</p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Digital Marketing -->
+          <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4.5 16.5c-1.5 1.25-2.5 3.5-2.5 3.5s2.25-1 3.5-2.5L18 5.5c1.2-1.2 1-3-.2-4.2s-3-.2-4.2 1L4.5 16.5z"/>
+                <path d="m9 15-5.5 5.5"/>
+                <path d="m15 9 5.5-5.5"/>
+                <path d="M9 20h5"/>
+                <path d="M20 9v5"/>
+              </svg>
+            </div>
+            <h3>Digital Marketing</h3>
+            <p>Comprehensive strategies that drive growth and engagement across all digital channels.</p>
+          </div>
+
+          <!-- E-Commerce Management -->
+          <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <path d="M16 10a4 4 0 0 1-8 0"/>
+              </svg>
+            </div>
+            <h3>E-Commerce Management</h3>
+            <p>End-to-end solutions for seamless online retail operations and store optimization.</p>
+          </div>
+
+          <!-- Graphic Design -->
+          <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 14.7255 3.09032 17.1962 4.85857 19C5.32115 19.4626 5.37894 20.2017 4.99616 20.7303L4.8524 20.9291C4.30138 21.691 4.79373 22 5.72973 22H12Z"/>
+                <circle cx="7.5" cy="10.5" r="1.5" fill="currentColor"/>
+                <circle cx="11.5" cy="7.5" r="1.5" fill="currentColor"/>
+                <circle cx="16.5" cy="9.5" r="1.5" fill="currentColor"/>
+                <circle cx="15.5" cy="14.5" r="1.5" fill="currentColor"/>
+              </svg>
+            </div>
+            <h3>Graphic Design</h3>
+            <p>Creative visual solutions that elevate your brand and communicate your message effectively.</p>
+          </div>
+
+          <!-- Website Management -->
+          <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <h3>Website Management</h3>
+            <p>Proactive website maintenance ensuring optimal performance, security, and user experience.</p>
+          </div>
+
+          <!-- Accounting Support -->
+          <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
+                <line x1="8" y1="6" x2="16" y2="6"/>
+                <line x1="16" y1="14" x2="16" y2="18"/>
+                <circle cx="9" cy="11" r="1"/>
+                <circle cx="15" cy="11" r="1"/>
+                <circle cx="9" cy="15" r="1"/>
+                <circle cx="9" cy="18" r="1"/>
+              </svg>
+            </div>
+            <h3>Accounting Support</h3>
+            <p>Reliable financial administration services to keep your books organized and compliant.</p>
+          </div>
+
+          <!-- Admin Support -->
+          <div class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                <line x1="9" y1="12" x2="15" y2="12"/>
+                <line x1="9" y1="16" x2="13" y2="16"/>
+              </svg>
+            </div>
+            <h3>Admin Support</h3>
+            <p>Comprehensive administrative assistance to streamline your daily operations.</p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3.5rem;">
+          <a href="src/services.html" class="btn btn-secondary">View detailed breakdown</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section section-padding">
+      <div class="container">
+        <div class="section-title-wrapper">
+          <span class="eyebrow">Our methodology</span>
+          <h2 class="section-title">The handoff process.</h2>
+          <p class="section-subtitle">How we integrate seamlessly with your brand to create a robust backend operations layer.</p>
+        </div>
+
+        <div class="timeline-wrapper">
+          <div class="timeline-line"></div>
+
+          <!-- Step 1 -->
+          <div class="timeline-step">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-step-number">Phase 01</span>
+              <h3>Discovery & Consultation</h3>
+              <p>We analyze your business, outline repetitive tasks, list technical needs, and draft a personalized support scope.</p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="timeline-step">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-step-number">Phase 02</span>
+              <h3>Strategy Development</h3>
+              <p>We compile standard operating procedures (SOPs), allocate resources, and prepare access credentials securely.</p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="timeline-step">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-step-number">Phase 03</span>
+              <h3>Implementation</h3>
+              <p>We kick off the operations flow, establish communication channels, and refine the tasks under direct oversight.</p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="timeline-step">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-step-number">Phase 04</span>
+              <h3>Ongoing Support</h3>
+              <p>We manage your operations day-in and day-out with continuous quality checks, reporting, and scale adjustments.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Close (Dark BG) -->
+    <section class="testimonial-section section-padding">
+      <div class="container testimonial-wrapper">
+        
+        <!-- Testimonial 1 -->
+        <div class="testimonial-item">
+          <div class="testimonial-stars" aria-label="5 stars out of 5">
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <blockquote class="testimonial-quote">
+            "Whitezebra Consulting has been an outstanding partner for our business. They manage our entire backend operations, including admin and customer services, our Shopify store, website updates, social media pages, product research, and design. Their team works with great efficiency and professionalism, making the entire process smooth and stress-free for us. We truly appreciate their support and commitment."
+          </blockquote>
+          <div class="testimonial-author">
+            <p class="testimonial-author-name">Dominic Carbone</p>
+            <p class="testimonial-author-title">Google Review</p>
+          </div>
+        </div>
+
+        <div class="testimonial-divider"></div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-item">
+          <div class="testimonial-stars" aria-label="5 stars out of 5">
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <blockquote class="testimonial-quote">
+            "White Zebra Consulting has been a go to company for all of our social media and SEO tasks."
+          </blockquote>
+          <div class="testimonial-author">
+            <p class="testimonial-author-name">Designs</p>
+            <p class="testimonial-author-title">Google Review</p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 5rem;">
+          <a href="src/contact.html" class="btn btn-primary" style="background-color: var(--color-bg-cream); color: var(--color-text-dark); border-color: var(--color-bg-cream);">Optimize your operations</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-column footer-brand">
+        <a href="index.html" class="logo" aria-label="Whitezebra Consulting Home">
+          <svg class="logo-mark" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="2" width="4" height="20" fill="currentColor"/>
+            <rect x="10" y="2" width="4" height="20" fill="currentColor"/>
+            <rect x="18" y="2" width="4" height="20" fill="currentColor"/>
+          </svg>
+          <span>whitezebra.</span>
+        </a>
+        <p>Premium offshore operations partner delivering backend support, web management, and digital marketing support for global businesses.</p>
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/company/whitezebraconsulting/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Company</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="src/about.html">About Us</a></li>
+          <li><a href="src/blog.html">Journal</a></li>
+          <li><a href="src/contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Services</h3>
+        <ul class="footer-links">
+          <li><a href="src/services.html#digital-marketing">Digital Marketing</a></li>
+          <li><a href="src/services.html#ecommerce">E-Commerce</a></li>
+          <li><a href="src/services.html#graphic-design">Graphic Design</a></li>
+          <li><a href="src/services.html#web-management">Web Management</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact</h3>
+        <div class="footer-contact-details">
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Phulbari Nagar Marg, Kathmandu 44600, Nepal</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>+977-9851324698</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>info.whitezebraconsulting@gmail.com</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>Mon–Fri 5:30 AM–2:00 PM NST</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Whitezebra Consulting Pvt. Ltd. All rights reserved.</p>
+      <p>Nepal Offshore Operations Layer</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
 </body>
 </html>
