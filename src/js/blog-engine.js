@@ -142,16 +142,21 @@ class BlogEngine {
       article.style.gridColumn = 'span 1'; // Keep consistent in hairline layout
     }
 
-    // Image container with premium hover effect (black & white transitioning to color)
     let imageHTML = '';
     if (post.image) {
+      const base = post.image.substring(0, post.image.lastIndexOf('.'));
       imageHTML = `
         <div style="width: 100%; height: 220px; overflow: hidden; border-bottom: 1px solid var(--color-border); margin-bottom: 1.5rem; background-color: var(--color-border); position: relative;">
-          <img src="./blogs_images/${post.image}" 
-               alt="${post.title}" 
-               style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: var(--transition-smooth);"
-               class="blog-card-img"
-               onerror="this.style.display='none'; this.parentNode.style.display='none';">
+          <picture style="width: 100%; height: 100%; display: block;">
+            <source type="image/avif" srcset="./blogs_images/${base}.avif">
+            <source type="image/webp" srcset="./blogs_images/${base}.webp">
+            <img src="./blogs_images/${post.image}" 
+                 alt="${post.title}" 
+                 style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: var(--transition-smooth);"
+                 class="blog-card-img"
+                 loading="lazy"
+                 onerror="this.style.display='none'; this.parentNode.style.display='none';">
+          </picture>
         </div>
       `;
     }

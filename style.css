@@ -87,6 +87,12 @@ a {
   margin-bottom: 1rem;
 }
 
+/* Logo picture element layout fix */
+.logo picture {
+  display: flex;
+  align-items: center;
+}
+
 .brand-color {
   color: var(--color-brand-green);
 }
@@ -118,7 +124,7 @@ a {
 
 .section-subtitle {
   font-size: 1.15rem;
-  color: #555555;
+  color: #404040; /* WCAG AA: contrast 9:1 on cream bg */
   line-height: 1.7;
 }
 
@@ -217,13 +223,14 @@ header.scrolled .logo-img {
 .nav-links a {
   font-size: 0.9rem;
   font-weight: 500;
-  opacity: 0.8;
+  color: var(--color-text-dark); /* Explicit color ensures WCAG AA contrast */
+  opacity: 1;
   position: relative;
   padding: 0.5rem 0;
 }
 
 .nav-links a:hover, .nav-links a.active {
-  opacity: 1;
+  color: var(--color-brand-green);
 }
 
 .nav-links a::after {
@@ -462,7 +469,14 @@ header.scrolled .logo-img {
 
 .comparison-item p {
   font-size: 0.95rem;
-  opacity: 0.8;
+}
+
+.comparison-panel.dark .comparison-item p {
+  color: rgba(244, 247, 245, 0.85); /* ~5.5:1 contrast on dark bg */
+}
+
+.comparison-panel.light .comparison-item p {
+  color: #3a3a3a; /* ~9.5:1 contrast on cream bg */
 }
 
 /* Stats Row */

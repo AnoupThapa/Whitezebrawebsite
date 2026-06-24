@@ -13,13 +13,13 @@
   <meta property="og:url" content="https://whitezebraconsulting.com/about">
   <meta property="og:title" content="About Us — Whitezebra Consulting">
   <meta property="og:description" content="Learn about Whitezebra Consulting, our mission to support business growth through premium offshore backend operations.">
-  <meta property="og:image" content="assets/whitezebra.jpeg">
+  <meta property="og:image" content="https://whitezebraconsulting.com/src/assets/whitezebra-meta.jpg">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="assets/whitezebra.jpeg">
+  <link rel="icon" type="image/png" href="../src/assets/whitezebra-logo.png">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../style.min.css">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://whitezebraconsulting.com/src/about.html">
@@ -33,7 +33,7 @@
       "@type": "Organization",
       "name": "Whitezebra Consulting",
       "url": "https://whitezebraconsulting.com/",
-      "logo": "https://whitezebraconsulting.com/src/assets/whitezebra.jpeg",
+      "logo": "https://whitezebraconsulting.com/src/assets/whitezebra-logo.png",
       "description": "Whitezebra Consulting acts as a premium offshore operations partner, supporting global businesses with dedicated administrative, accounting, marketing, and website management teams.",
       "address": {
         "@type": "PostalAddress",
@@ -46,9 +46,9 @@
   }
   </script>
 
-  <!-- Preconnect and Google Analytics -->
+  <!-- Preconnect for critical origins -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://www.googletagmanager.com">
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <script>
     function loadGA() {
       if (window.gaLoaded) return;
@@ -74,7 +74,11 @@
   <header id="mainHeader">
     <div class="container nav-container">
       <a href="../index.html" class="logo" aria-label="Whitezebra Consulting Home">
-        <img src="assets/whitezebra.jpeg" alt="Whitezebra Logo" class="logo-img">
+        <picture>
+          <source type="image/avif" srcset="assets/whitezebra-logo.avif">
+          <source type="image/webp" srcset="assets/whitezebra-logo.webp">
+          <img src="assets/whitezebra-logo.png" alt="Whitezebra Consulting Logo" class="logo-img" width="38" height="38">
+        </picture>
         <span>whitezebra.</span>
       </a>
 
@@ -142,7 +146,11 @@
           <p style="font-size: 1.05rem; color: #333;">Today, we combine industry expertise with cutting-edge technology to deliver backend solutions that drive efficiency, reduce costs, and enable business growth. Our commitment to continuous improvement and client satisfaction has been the cornerstone of our success.</p>
         </div>
         <div style="background-color: var(--color-border); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; border: 1px solid var(--color-border);">
-          <img src="assets/aboutus.png" alt="Our team working on backend support operations" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.parentNode.innerHTML='<span class=\'serif-font\' style=\'font-size: 1.5rem; opacity: 0.5;\'>whitezebra.</span>'">
+          <picture>
+            <source type="image/avif" srcset="assets/aboutus-400.avif 400w, assets/aboutus-800.avif 800w, assets/aboutus-1200.avif 1200w" sizes="(max-width: 768px) 100vw, 50vw">
+            <source type="image/webp" srcset="assets/aboutus-400.webp 400w, assets/aboutus-800.webp 800w, assets/aboutus-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 50vw">
+            <img src="assets/aboutus-800.png" alt="Our team working on backend support operations" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" width="800" height="600">
+          </picture>
         </div>
       </div>
     </section>
@@ -290,7 +298,11 @@
     <div class="container footer-grid">
       <div class="footer-column footer-brand">
         <a href="../index.html" class="logo" aria-label="Whitezebra Consulting Home">
-          <img src="assets/whitezebra.jpeg" alt="Whitezebra Logo" class="logo-img">
+          <picture>
+            <source type="image/avif" srcset="assets/whitezebra-logo.avif">
+            <source type="image/webp" srcset="assets/whitezebra-logo.webp">
+            <img src="assets/whitezebra-logo.png" alt="Whitezebra Consulting Logo" class="logo-img" width="38" height="38" loading="lazy">
+          </picture>
           <span>Whitezebra Consulting</span>
         </a>
         <p>Premium offshore operations partner delivering backend support, web management, and digital marketing support for global businesses.</p>
@@ -351,6 +363,6 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="../script.js"></script>
+  <script src="../script.min.js" defer></script>
 </body>
 </html>

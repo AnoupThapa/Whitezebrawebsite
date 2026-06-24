@@ -8,10 +8,10 @@
   <meta name="robots" content="noindex, follow">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="src/assets/whitezebra.jpeg">
+  <link rel="icon" type="image/png" href="src/assets/whitezebra-logo.png">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.min.css">
 
   <style>
     .error-layout {
@@ -50,7 +50,11 @@
   <header id="mainHeader">
     <div class="container nav-container">
       <a href="index.html" class="logo" aria-label="Whitezebra Consulting Home">
-        <img src="src/assets/whitezebra.jpeg" alt="Whitezebra Logo" class="logo-img">
+        <picture>
+          <source type="image/avif" srcset="src/assets/whitezebra-logo.avif">
+          <source type="image/webp" srcset="src/assets/whitezebra-logo.webp">
+          <img src="src/assets/whitezebra-logo.png" alt="Whitezebra Consulting Logo" class="logo-img" width="38" height="38">
+        </picture>
         <span>whitezebra.</span>
       </a>
 
@@ -86,7 +90,11 @@
     <div class="container footer-grid">
       <div class="footer-column footer-brand">
         <a href="index.html" class="logo" aria-label="Whitezebra Consulting Home">
-          <img src="src/assets/whitezebra.jpeg" alt="Whitezebra Logo" class="logo-img">
+          <picture>
+            <source type="image/avif" srcset="src/assets/whitezebra-logo.avif">
+            <source type="image/webp" srcset="src/assets/whitezebra-logo.webp">
+            <img src="src/assets/whitezebra-logo.png" alt="Whitezebra Consulting Logo" class="logo-img" width="38" height="38" loading="lazy">
+          </picture>
           <span>Whitezebra Consulting</span>
         </a>
         <p>Premium offshore operations partner delivering backend support, web management, and digital marketing support for global businesses.</p>
@@ -146,6 +154,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.min.js" defer></script>
 </body>
 </html>

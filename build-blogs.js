@@ -404,7 +404,16 @@ function generateBlogHTML(post, allPosts) {
         </span>
       </div>
 
-      ${post.image ? `<img src="./blogs_images/${post.image}" alt="${post.title}" class="post-image">` : ''}
+      ${post.image ? (() => {
+        const ext = path.extname(post.image);
+        const base = path.basename(post.image, ext);
+        return `
+        <picture>
+          <source type="image/avif" srcset="./blogs_images/${base}.avif">
+          <source type="image/webp" srcset="./blogs_images/${base}.webp">
+          <img src="./blogs_images/${post.image}" alt="${post.title.replace(/"/g, '&quot;')}" class="post-image" width="1200" height="630">
+        </picture>`;
+      })() : ''}
 
       <div class="post-excerpt">${highlightBrand(post.content?.introduction || post.excerpt || '')}</div>
 

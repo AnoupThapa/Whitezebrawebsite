@@ -15,5 +15,10 @@
     "digital-marketing"
   ],
   "author": "Whitezebra Consulting",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "clean-css": "^5.3.3",
+    "sharp": "^0.35.2",
+    "terser": "^5.48.0"
+  }
 }

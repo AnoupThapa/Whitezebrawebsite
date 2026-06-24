@@ -13,20 +13,20 @@
   <meta property="og:url" content="https://whitezebraconsulting.com/">
   <meta property="og:title" content="Whitezebra Consulting — Offshore Operations & Backend Support">
   <meta property="og:description" content="Premium offshore backend support services for digital businesses. We handle the operations layer so you can focus on scaling.">
-  <meta property="og:image" content="src/assets/whitezebra.jpeg">
+  <meta property="og:image" content="https://whitezebraconsulting.com/src/assets/whitezebra-meta.jpg">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://whitezebraconsulting.com/">
   <meta property="twitter:title" content="Whitezebra Consulting — Offshore Operations & Backend Support">
   <meta property="twitter:description" content="Premium offshore backend support services for digital businesses. We handle the operations layer so you can focus on scaling.">
-  <meta property="twitter:image" content="src/assets/whitezebra.jpeg">
+  <meta property="twitter:image" content="https://whitezebraconsulting.com/src/assets/whitezebra-meta.jpg">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="src/assets/whitezebra.jpeg">
+  <link rel="icon" type="image/png" href="src/assets/whitezebra-logo.png">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.min.css">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://whitezebraconsulting.com/">
@@ -40,8 +40,8 @@
     "alternateName": "Whitezebra",
     "description": "Premium offshore operations partner specializing in comprehensive backend support, digital marketing, e-commerce, and admin support.",
     "url": "https://whitezebraconsulting.com/",
-    "logo": "https://whitezebraconsulting.com/src/assets/whitezebra.jpeg",
-    "image": "https://whitezebraconsulting.com/src/assets/whitezebra.jpeg",
+    "logo": "https://whitezebraconsulting.com/src/assets/whitezebra-logo.png",
+    "image": "https://whitezebraconsulting.com/src/assets/whitezebra-meta.jpg",
     "telephone": "+977-9851324698",
     "email": "info.whitezebraconsulting@gmail.com",
     "address": {
@@ -69,9 +69,88 @@
   }
   </script>
 
-  <!-- Preconnect and Google Analytics -->
+  <!-- Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Whitezebra Consulting",
+    "url": "https://whitezebraconsulting.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://whitezebraconsulting.com/src/assets/whitezebra-logo.png",
+      "width": 512,
+      "height": 512
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+977-9851324698",
+      "contactType": "customer service",
+      "email": "info.whitezebraconsulting@gmail.com",
+      "availableLanguage": "English"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Phulbari Nagar Marg",
+      "addressLocality": "Kathmandu",
+      "postalCode": "44600",
+      "addressCountry": "NP"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/whitezebraconsulting/"
+    ]
+  }
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What services does Whitezebra Consulting offer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Whitezebra Consulting offers comprehensive offshore backend operations including digital marketing, e-commerce management (Shopify, WooCommerce), graphic design, website management, accounting support, and dedicated administrative support."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does Whitezebra Consulting cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Whitezebra Consulting offers flexible pricing plans starting from part-time support packages. Contact us for a custom quote tailored to your business needs. Most clients save 50%+ compared to in-house hiring."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where is Whitezebra Consulting located?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Whitezebra Consulting is headquartered in Kathmandu, Nepal, providing offshore operations support to businesses across the US, UK, Australia, and Europe. Our team operates Monday–Friday, 5:30 AM–2:00 PM NST."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What makes Whitezebra Consulting different from other offshore providers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Whitezebra Consulting acts as a seamless extension of your team — not just a vendor. We provide dedicated teams with deep expertise in Shopify, digital marketing, and business operations, with 99% client retention and transparent communication."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Preconnect for critical origins -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://www.googletagmanager.com">
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  <!-- Preload LCP hero image (mobile: 400w, desktop: 800w) -->
+  <link rel="preload" as="image" href="src/assets/hero-operations-400.avif" imagesrcset="src/assets/hero-operations-400.avif 400w, src/assets/hero-operations-800.avif 800w, src/assets/hero-operations-1200.avif 1200w" imagesizes="(max-width: 992px) 100vw, 50vw" type="image/avif" media="(min-width: 1px)">
+  <link rel="preload" as="image" href="src/assets/hero-operations-800.webp" imagesrcset="src/assets/hero-operations-400.webp 400w, src/assets/hero-operations-800.webp 800w, src/assets/hero-operations-1200.webp 1200w" imagesizes="(max-width: 992px) 100vw, 50vw" type="image/webp">
   <script>
     function loadGA() {
       if (window.gaLoaded) return;
@@ -97,7 +176,11 @@
   <header id="mainHeader">
     <div class="container nav-container">
       <a href="index.html" class="logo" aria-label="Whitezebra Consulting Home">
-        <img src="src/assets/whitezebra.jpeg" alt="Whitezebra Logo" class="logo-img">
+        <picture>
+          <source type="image/avif" srcset="src/assets/whitezebra-logo.avif">
+          <source type="image/webp" srcset="src/assets/whitezebra-logo.webp">
+          <img src="src/assets/whitezebra-logo.png" alt="Whitezebra Consulting Logo" class="logo-img" width="38" height="38">
+        </picture>
         <span>whitezebra.</span>
       </a>
 
@@ -134,7 +217,11 @@
           </div>
         </div>
         <div class="hero-image-wrapper">
-          <img src="src/assets/hero-operations.png" alt="Whitezebra Consulting - Premium Offshore Operations Support" class="hero-image">
+          <picture>
+            <source type="image/avif" srcset="src/assets/hero-operations-400.avif 400w, src/assets/hero-operations-800.avif 800w, src/assets/hero-operations-1200.avif 1200w" sizes="(max-width: 992px) 100vw, 50vw">
+            <source type="image/webp" srcset="src/assets/hero-operations-400.webp 400w, src/assets/hero-operations-800.webp 800w, src/assets/hero-operations-1200.webp 1200w" sizes="(max-width: 992px) 100vw, 50vw">
+            <img src="src/assets/hero-operations-800.png" alt="Whitezebra Consulting team managing offshore operations and backend support" class="hero-image" width="800" height="520" fetchpriority="high">
+          </picture>
         </div>
       </div>
     </section>
@@ -404,12 +491,12 @@
         <div class="testimonial-slider">
           <!-- Testimonial 1 -->
           <div class="testimonial-slide active">
-            <div class="testimonial-stars" aria-label="5 stars out of 5">
-              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <div class="testimonial-stars" role="img" aria-label="5 stars out of 5">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             </div>
             <blockquote class="testimonial-quote">
               "<span class="brand-color">Whitezebra</span> Consulting has been an outstanding partner for our business. They manage our entire backend operations, including admin and customer services, our Shopify store, website updates, social media pages, product research, and design. Their team works with great efficiency and professionalism, making the entire process smooth and stress-free for us. We truly appreciate their support and commitment."
@@ -422,12 +509,12 @@
 
           <!-- Testimonial 2 -->
           <div class="testimonial-slide">
-            <div class="testimonial-stars" aria-label="5 stars out of 5">
-              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <div class="testimonial-stars" role="img" aria-label="5 stars out of 5">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             </div>
             <blockquote class="testimonial-quote">
               "<span class="brand-color">Whitezebra</span> Consulting has been a go to company for all of our social media and SEO tasks."
@@ -452,7 +539,11 @@
     <div class="container footer-grid">
       <div class="footer-column footer-brand">
         <a href="index.html" class="logo" aria-label="Whitezebra Consulting Home">
-          <img src="src/assets/whitezebra.jpeg" alt="Whitezebra Logo" class="logo-img">
+          <picture>
+            <source type="image/avif" srcset="src/assets/whitezebra-logo.avif">
+            <source type="image/webp" srcset="src/assets/whitezebra-logo.webp">
+            <img src="src/assets/whitezebra-logo.png" alt="Whitezebra Consulting Logo" class="logo-img" width="38" height="38" loading="lazy">
+          </picture>
           <span>Whitezebra Consulting</span>
         </a>
         <p>Premium offshore operations partner delivering backend support, web management, and digital marketing support for global businesses.</p>
@@ -513,6 +604,6 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="script.js"></script>
+  <script src="script.min.js" defer></script>
 </body>
 </html>
