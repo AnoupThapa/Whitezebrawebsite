@@ -97,4 +97,62 @@ document.addEventListener('DOMContentLoaded', () => {
       slides[currentSlide].classList.add('active');
     }, 6000);
   }
+
+  // --- 4. Statistics Counter Animation ---
+  const stats = document.querySelectorAll('.stats-section .stat-number');
+  
+  if (stats.length > 0) {
+    const animateCounter = (el) => {
+      const originalText = el.textContent.trim();
+      const numbers = originalText.match(/\d+/g);
+      if (!numbers) return;
+      
+      const targets = numbers.map(num => parseInt(num, 10));
+      const nonNumbers = originalText.split(/\d+/);
+      
+      const duration = 1500; // 1.5 seconds animation duration
+      let startTime = null;
+      
+      const step = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        
+        let newText = '';
+        for (let i = 0; i < nonNumbers.length; i++) {
+          newText += nonNumbers[i];
+          if (i < targets.length) {
+            const currentVal = Math.floor(progress * targets[i]);
+            newText += currentVal;
+          }
+        }
+        
+        el.textContent = newText;
+        
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = originalText;
+        }
+      };
+      
+      requestAnimationFrame(step);
+    };
+
+    const observerOptions = {
+      root: null,
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          animateCounter(el);
+          observer.unobserve(el);
+        }
+      });
+    }, observerOptions);
+
+    stats.forEach(stat => observer.observe(stat));
+  }
 });
