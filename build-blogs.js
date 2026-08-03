@@ -350,7 +350,7 @@ function generateBlogHTML(post, allPosts) {
     <div class="container nav-container">
       <a href="../index.html" class="logo" aria-label="Whitezebra Consulting Home">
         <img src="./assets/whitezebra.jpeg" alt="Whitezebra Logo" class="logo-img">
-        <span>whitezebra.</span>
+        <span>WHITEZEBRA CONSULTING</span>
       </a>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="navLinks">
@@ -437,7 +437,7 @@ function generateBlogHTML(post, allPosts) {
       <div class="footer-column footer-brand">
         <a href="../index.html" class="logo" aria-label="Whitezebra Consulting Home">
           <img src="./assets/whitezebra.jpeg" alt="Whitezebra Logo" class="logo-img">
-          <span>whitezebra.</span>
+          <span>WHITEZEBRA CONSULTING</span>
         </a>
         <p>Premium offshore operations partner delivering backend support, web management, and digital marketing support for global businesses.</p>
         <div class="footer-socials">
