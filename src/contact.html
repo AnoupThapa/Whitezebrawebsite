@@ -146,7 +146,14 @@
             <p>Thank you for contacting <span class="brand-color">Whitezebra</span> Consulting. Our team will review your inquiry and get back to you within 24 hours.</p>
           </div>
 
-          <form id="contactForm" name="contact" style="margin-top: 1rem;">
+          <form id="contactForm" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" style="margin-top: 1rem;">
+            <!-- Netlify hidden fields -->
+            <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="subject" value="New Contact Form Submission - Whitezebra Consulting" />
+            <div hidden>
+              <input name="bot-field" />
+            </div>
+
             <div class="form-group">
               <label for="name">Full Name *</label>
               <input type="text" id="name" name="name" placeholder="Enter your full name" required>
@@ -276,13 +283,12 @@
   <!-- Scripts -->
   <script src="../script.min.js" defer></script>
   
-  <!-- Form Submission Handler -->
+  <!-- Netlify Form Submission Handler -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const contactForm = document.getElementById('contactForm');
       const successMessage = document.getElementById('successMessage');
       const submitBtn = document.getElementById('submitBtn');
-      const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzCtkDSo_AvMrh5uE2_2WtEHZGtTkM8jXC5lndILEqXCCfF6-jyimLHpF4oYUQ1MXde/exec';
 
       if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -300,14 +306,10 @@
             }
           }
 
-          // Get fields
+          // Get required fields
           const name = document.getElementById('name').value.trim();
           const email = document.getElementById('email').value.trim();
-          const phone = document.getElementById('phone').value.trim();
-          const company = document.getElementById('company').value.trim();
-          const service = document.getElementById('service').value;
           const message = document.getElementById('message').value.trim();
-          const newsletter = document.getElementById('newsletter').checked;
 
           if (!name || !email || !message) {
             showToast('Please fill out all required fields.', 'error');
@@ -325,24 +327,12 @@
           submitBtn.disabled = true;
           submitBtn.textContent = 'Sending...';
 
-          // URL encoded data
-          const formDataObject = new URLSearchParams();
-          formDataObject.append('name', name);
-          formDataObject.append('email', email);
-          formDataObject.append('phone', phone);
-          formDataObject.append('company', company);
-          formDataObject.append('service', service || '');
-          formDataObject.append('message', message);
-          formDataObject.append('newsletter', newsletter ? 'Yes' : 'No');
-          formDataObject.append('source', 'Whitezebra Consulting Website Redesign');
-
-          fetch(GOOGLE_SHEETS_URL, {
+          // Netlify AJAX submission: POST to / with URL-encoded FormData
+          const formData = new FormData(contactForm);
+          fetch('/', {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: formDataObject.toString(),
-            mode: 'no-cors'
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData).toString()
           })
           .then(() => {
             // Set cooldown
@@ -361,7 +351,7 @@
           })
           .catch(error => {
             console.error('Submission error:', error);
-            showToast('Something went wrong. Please email us directly.', 'error');
+            showToast('Something went wrong. Please try again or email us directly.', 'error');
           })
           .finally(() => {
             submitBtn.disabled = false;
